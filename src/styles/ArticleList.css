@@ -1,8 +1,6 @@
 .ArticleList {
   list-style: none;
-  background-color: gold;
-  z-index: -1;
-  height: 100%;
+  background-color: lightgray;
 }
 
 ul {

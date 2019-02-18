@@ -1,16 +1,19 @@
 .Navbar {
+  grid-area: navbar;
   display: grid;
-  grid-template-columns: 8em 1fr;
+  grid-template-columns: 12em 1fr;
   grid-template-areas: "title nav";
-  border-bottom: 1px solid black;
   padding: 0;
   margin: 0;
+  background-color: cornflowerblue;
 }
 
-.title {
+.Navbar .title {
+  padding-left: 0.5em;
   border-right: 1px solid black;
   width: 100%;
-  text-align: center;
+  text-align: left;
+  background-color: pink;
 }
 
 h1 {
