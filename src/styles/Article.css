@@ -1,11 +1,52 @@
 .Article {
   display: grid;
   margin: 1px;
+  grid-template-rows: 1.5em 1.5em 1fr 2em;
+  grid-template-columns: 3em 1fr;
+  grid-template-areas:
+    "avatar author"
+    "avatar topic"
+    "title title"
+    "controls controls";
 }
 
 li {
   list-style-type: none;
   background-color: white;
-  margin-bottom: 2px;
-  margin-top: 2px;
+  margin-bottom: 4px;
+  margin-top: 4px;
+}
+
+.Article > * {
+  margin: 0.5em;
+}
+
+.Article .avatar {
+  grid-area: avatar;
+}
+
+.Article .avatar img {
+  height: 100%;
+  width: 100%;
+  background-color: palevioletred;
+  border-radius: 50%;
+}
+
+.Article .title {
+  font-weight: bold;
+  text-align: left;
+  grid-area: title;
+}
+
+.Article .topic {
+  grid-area: topic;
+}
+
+.Article .author {
+  grid-area: author;
+  color: blue;
+}
+
+.Article .controls {
+  grid-area: controls;
 }
