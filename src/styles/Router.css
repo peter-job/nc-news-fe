@@ -1,0 +1,5 @@
+.Router {
+  grid-area: router;
+  height: 1fr;
+  overflow-y: auto;
+}
