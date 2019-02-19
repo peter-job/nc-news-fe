@@ -1,5 +1,6 @@
 import React from "react";
 import "../styles/Article.css";
+import Moment from "moment";
 
 const Article = ({ article }) => {
   return (
@@ -13,6 +14,8 @@ const Article = ({ article }) => {
       <div className="author">
         <span>
           {article.author} in {article.topic}
+          {" - "}
+          {Moment(article.created_at, "YYYY-MM-DD-Thh:mm:ss").fromNow()}
         </span>
       </div>
       <div className="topic">
