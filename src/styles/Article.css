@@ -35,7 +35,6 @@ li {
 }
 
 .Article .title {
-  font-weight: bold;
   text-align: left;
   grid-area: title;
   margin-top: 0.25em;
