@@ -1,8 +1,8 @@
 .Navbar {
   grid-area: navbar;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-areas: "title login";
+  grid-template-columns: 1fr 4em;
+  grid-template-areas: "title user";
   padding: 0;
   margin: 0;
   background-color: cornflowerblue;
@@ -25,4 +25,16 @@ h2 {
   margin-right: 0;
   justify-self: left;
   font-weight: lighter;
+}
+
+.UserIcon {
+  grid-area: user;
+  margin: 0.5em;
+  justify-self: right;
+}
+
+.UserIcon img {
+  height: 2em;
+  width: 2em;
+  border-radius: 50%;
 }

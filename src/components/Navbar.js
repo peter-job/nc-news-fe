@@ -1,6 +1,6 @@
 import React from "react";
 import "../styles/Navbar.css";
-import Login from "./Login";
+import UserIcon from "./UserIcon";
 
 const Navbar = () => {
   return (
@@ -8,6 +8,7 @@ const Navbar = () => {
       <div className="title">
         <h2>NC News</h2>
       </div>
+      <UserIcon />
     </div>
   );
 };
