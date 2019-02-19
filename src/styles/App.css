@@ -1,11 +1,12 @@
 body {
   margin: 0;
   padding: 0;
+  font-family: "Noto Sans", sans-serif;
 }
 
 .App {
   display: grid;
-  grid-template-rows: 2.5em 1fr;
+  grid-template-rows: 3em 1fr;
   grid-template-areas:
     "navbar"
     "router";
