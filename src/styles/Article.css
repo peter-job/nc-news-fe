@@ -2,12 +2,11 @@
   display: grid;
   margin: 1px;
   padding: 0.5em;
-  grid-template-rows: 1fr 1em 1em;
-  grid-template-columns: 1em 1fr;
+  grid-template-rows: 1fr 2em;
+  grid-template-columns: 2em 1fr 4em;
   grid-template-areas:
-    "title title"
-    "avatar author"
-    "controls controls";
+    "title title title"
+    "avatar author votes";
 }
 
 li {
@@ -25,6 +24,7 @@ li {
 .Article .avatar {
   grid-area: avatar;
   margin: 0;
+  background-color: palevioletred;
 }
 
 .Article .avatar img {
@@ -40,6 +40,7 @@ li {
   grid-area: title;
   margin-top: 0.25em;
   margin-bottom: 0.25em;
+  background-color: peachpuff;
 }
 
 .Article .topic {
@@ -56,9 +57,33 @@ li {
   margin-left: 0.5em;
   font-size: 0.8em;
   align-self: center;
+  background-color: paleturquoise;
 }
 
-.Article .controls {
-  grid-area: controls;
-  margin-bottom: 0.25em;
+.Votes {
+  grid-area: votes;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: "down count up";
+  background-color: palegreen;
+  justify-items: center;
+  align-items: center;
+  margin: 0;
+  color: darkslategray;
+}
+
+.Votes .down {
+  grid-area: down;
+}
+
+.Votes .count {
+  grid-area: count;
+}
+
+.Votes .up {
+  grid-area: up;
+}
+
+.Votes .Voted {
+  color: orange;
 }

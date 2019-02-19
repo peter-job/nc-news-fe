@@ -1,6 +1,7 @@
 import React from "react";
 import "../styles/Article.css";
 import Moment from "moment";
+import Votes from "./Votes";
 
 const Article = ({ article }) => {
   return (
@@ -14,7 +15,7 @@ const Article = ({ article }) => {
       <div className="author">
         <span>
           {article.author} in {article.topic}
-          {" - "}
+          <br />
           {Moment(article.created_at, "YYYY-MM-DD-Thh:mm:ss").fromNow()}
         </span>
       </div>
@@ -24,8 +25,8 @@ const Article = ({ article }) => {
       <div className="title">
         <span>{article.title}</span>
       </div>
-      <div className="controls">
-        <span>votes: {article.votes}</span>
+      <div className="Votes">
+        <Votes votes={article.votes} path={`articles/${article.article_id}`} />
       </div>
     </div>
   );
