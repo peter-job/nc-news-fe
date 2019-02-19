@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 // import patchRequest from api
 
 class Vote extends Component {
+  //save this to localstorage
   state = {
     voted: 0
   };

@@ -8,7 +8,6 @@ const Navbar = () => {
       <div className="title">
         <h2>NC News</h2>
       </div>
-      <Login />
     </div>
   );
 };
