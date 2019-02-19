@@ -1,12 +1,12 @@
 .Article {
   display: grid;
   margin: 1px;
-  grid-template-rows: 1.5em 1.5em 1fr 2em;
-  grid-template-columns: 3em 1fr;
+  padding: 0.5em;
+  grid-template-rows: 1fr 1em 1em;
+  grid-template-columns: 1em 1fr;
   grid-template-areas:
-    "avatar author"
-    "avatar topic"
     "title title"
+    "avatar author"
     "controls controls";
 }
 
@@ -18,11 +18,13 @@ li {
 }
 
 .Article > * {
-  margin: 0.5em;
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
 }
 
 .Article .avatar {
   grid-area: avatar;
+  margin: 0;
 }
 
 .Article .avatar img {
@@ -36,17 +38,27 @@ li {
   font-weight: bold;
   text-align: left;
   grid-area: title;
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
 }
 
 .Article .topic {
   grid-area: topic;
+  margin-top: 0.125em;
+  margin-left: 0.125em;
+  font-size: 0.8em;
 }
 
 .Article .author {
   grid-area: author;
-  color: blue;
+  color: darkslategray;
+  margin: 0.5em;
+  margin-left: 0.5em;
+  font-size: 0.8em;
+  align-self: center;
 }
 
 .Article .controls {
   grid-area: controls;
+  margin-bottom: 0.25em;
 }

@@ -11,10 +11,12 @@ const Article = ({ article }) => {
         />
       </div>
       <div className="author">
-        <span>{article.author}</span>
+        <span>
+          {article.author} in {article.topic}
+        </span>
       </div>
       <div className="topic">
-        <span>{article.topic}</span>
+        <span />
       </div>
       <div className="title">
         <span>{article.title}</span>
