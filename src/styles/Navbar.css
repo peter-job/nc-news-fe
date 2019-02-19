@@ -1,8 +1,8 @@
 .Navbar {
   grid-area: navbar;
   display: grid;
-  grid-template-columns: 12em 1fr;
-  grid-template-areas: "title nav";
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "title login";
   padding: 0;
   margin: 0;
   background-color: cornflowerblue;

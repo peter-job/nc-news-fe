@@ -1,5 +1,6 @@
 import React from "react";
 import "../styles/Navbar.css";
+import Login from "./Login";
 
 const Navbar = () => {
   return (
@@ -7,6 +8,7 @@ const Navbar = () => {
       <div className="title">
         <h2>NC News</h2>
       </div>
+      <Login />
     </div>
   );
 };
