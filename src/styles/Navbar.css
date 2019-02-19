@@ -9,15 +9,19 @@
 }
 
 .Navbar .title {
-  padding-left: 0.5em;
-  border-right: 1px solid black;
-  width: 100%;
   text-align: left;
   background-color: pink;
+  font-family: "Merriweather", serif;
+  align-self: center;
+  justify-self: left;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
 }
 
-h1 {
+h2 {
   padding: 0;
   margin: 0;
+  margin-left: 0em;
+  margin-right: 0;
   justify-self: left;
 }

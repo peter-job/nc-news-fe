@@ -35,7 +35,7 @@ li {
 }
 
 .Article .title {
-  font-weight: bold;
+  font-family: "Merriweather", serif;
   text-align: left;
   grid-area: title;
   margin-top: 0.25em;
