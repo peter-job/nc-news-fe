@@ -74,14 +74,35 @@ describe("patchVotes", () => {
       })
       .then(article => {
         expect(article.votes).toEqual(votes + 1);
+        return article;
       })
-      .then(() => fetchArticleById(1))
       .then(article => {
         votes = article.votes;
         return patchVotes(-1, 1);
       })
       .then(article => {
         expect(article.votes).toEqual(votes - 1);
+      });
+  });
+  it("updates a comments votes if a comment_id is provided", () => {
+    let votes = 0;
+    let comment_id = 0;
+    return fetchCommentsByArticleId(1)
+      .then(comments => {
+        comment_id = comments[0].comment_id;
+        votes = comments[0].votes;
+        return patchVotes(1, 1, comment_id);
+      })
+      .then(comment => {
+        expect(comment.votes).toEqual(votes + 1);
+        return comment;
+      })
+      .then(comment => {
+        votes = comment.votes;
+        return patchVotes(-1, 1, comment_id);
+      })
+      .then(comment => {
+        expect(comment.votes).toEqual(votes - 1);
       });
   });
 });
