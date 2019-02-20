@@ -25,3 +25,13 @@ export const fetchCommentsByArticleId = article_id => {
   const path = `articles/${article_id}/comments`;
   return axios.get(`${BASE_URL + path}`).then(({ data }) => data.comments);
 };
+
+export const fetchUserByUsername = username => {
+  const path = `users/${username}`;
+  return axios.get(`${BASE_URL + path}`).then(({ data }) => data.user);
+};
+
+export const fetchUsers = () => {
+  const path = `users`;
+  return axios.get(`${BASE_URL + path}`).then(({ data }) => data.users);
+};

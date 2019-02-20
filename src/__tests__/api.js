@@ -2,7 +2,9 @@ const {
   fetchArticles,
   fetchArticleById,
   patchVotes,
-  fetchCommentsByArticleId
+  fetchCommentsByArticleId,
+  fetchUserByUsername,
+  fetchUsers
 } = require("../api");
 
 describe("fetchArticles", () => {
@@ -119,5 +121,30 @@ describe("fetchCommentsByArticleId", () => {
         expect(comment).toHaveProperty("body");
       });
     });
+  });
+});
+
+describe("fetchUsers", () => {
+  it("returns an array of users", () => {
+    return fetchUsers().then(users => {
+      expect(users.length).toBeGreaterThan(1);
+      users.forEach(user => {
+        expect(user).toHaveProperty("username");
+        expect(user).toHaveProperty("avatar_url");
+        expect(user).toHaveProperty("name");
+      });
+    });
+  });
+});
+
+describe("fetchUserByUsername", () => {
+  it("returns a user for the given username", () => {
+    return fetchUsers()
+      .then(users => fetchUserByUsername(users[0].username))
+      .then(user => {
+        expect(user).toHaveProperty("username");
+        expect(user).toHaveProperty("avatar_url");
+        expect(user).toHaveProperty("name");
+      });
   });
 });
