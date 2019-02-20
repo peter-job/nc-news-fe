@@ -7,6 +7,11 @@ export const fetchArticles = (sort_by = "created_at") => {
   return axios.get(`${BASE_URL + path}`).then(({ data }) => data.articles);
 };
 
+export const fetchArticleById = article_id => {
+  const path = `articles/` + article_id;
+  return axios.get(`${BASE_URL + path}`).then(({ data }) => data.article);
+};
+
 export const patchVotes = (voted, article_id, comment_id) => {
   const body = { inc_votes: voted };
   const path = `articles/${article_id}${

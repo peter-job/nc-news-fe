@@ -1,4 +1,4 @@
-const { fetchArticles, patchVotes } = require("../api");
+const { fetchArticles, fetchArticleById, patchVotes } = require("../api");
 
 describe("fetchArticles", () => {
   it("returns a list of articles from the nc-news backend", () => {
@@ -42,5 +42,18 @@ describe("fetchArticles", () => {
         copy.sort((a, b) => (a.comment_count <= b.comment_count ? 0 : -1));
         expect(articles).toEqual(copy);
       });
+  });
+});
+
+describe("fetchArticleById", () => {
+  it("returns an article with the given article_id", () => {
+    return fetchArticleById(1).then(article => {
+      expect(article).toHaveProperty("article_id", 1);
+      expect(article).toHaveProperty("author");
+      expect(article).toHaveProperty("title");
+      expect(article).toHaveProperty("created_at");
+      expect(article).toHaveProperty("topic");
+      expect(article).toHaveProperty("comment_count");
+    });
   });
 });
