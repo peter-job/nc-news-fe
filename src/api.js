@@ -3,7 +3,8 @@ const BASE_URL = "https://be2-nc-news.herokuapp.com/api/";
 
 export const fetchArticles = (sort_by = "created_at") => {
   const path = `articles?sort_by=${sort_by}`;
-  return axios.get(`${BASE_URL + path}`).then(data => data.articles);
+  console.log(`${BASE_URL + path}`);
+  return axios.get(`${BASE_URL + path}`).then(({ data }) => data.articles);
 };
 
 export const patchVotes = (article_id, comment_id, voted) => {
