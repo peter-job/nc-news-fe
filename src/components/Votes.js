@@ -31,7 +31,7 @@ class Vote extends Component {
           className={`up noselect ${voted > 0 ? "Voted" : ""}`}
           onClick={() => this.incVotes(path)}
         >
-          <i class="fi-arrow-up" />{" "}
+          <i className="fi-arrow-up" />{" "}
         </span>
 
         <span className="count noselect">{votes + voted}</span>
@@ -40,7 +40,7 @@ class Vote extends Component {
           className={`down noselect ${voted < 0 ? "Voted" : ""}`}
           onClick={() => this.decVotes(path)}
         >
-          <i class="fi-arrow-down" />{" "}
+          <i className="fi-arrow-down" />{" "}
         </span>
       </Fragment>
     );
