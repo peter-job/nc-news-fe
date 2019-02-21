@@ -1,18 +1,18 @@
 import React, { Component } from "react";
+import { Router } from "@reach/router";
 import "./styles/App.css";
 import "./styles/Router.css";
 import Navbar from "./components/Navbar";
-import ArticleList from "./components/ArticleList";
-import data from "./data";
+import Home from "./components/Home";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
         <Navbar />
-        <div className="Router">
-          <ArticleList articles={data.articles} />
-        </div>
+        <Router className="Router">
+          <Home path="/" />
+        </Router>
       </div>
     );
   }
