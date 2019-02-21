@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "@reach/router";
 import "../styles/Article.css";
 import Moment from "moment";
 import Votes from "./Votes";
@@ -23,7 +24,7 @@ const Article = ({ article }) => {
         <span />
       </div>
       <div className="title">
-        <span>{article.title}</span>
+        <Link to={`/articles/${article.article_id}`}>{article.title}</Link>
       </div>
       <div className="Votes">
         <Votes votes={article.votes} article_id={article.article_id} />

@@ -20,7 +20,7 @@
 
 .Navbar .Title a:link,
 .Navbar .Title a:visited {
-  color: var(--nav-color);
+  color: black;
   text-decoration: none;
 }
 
