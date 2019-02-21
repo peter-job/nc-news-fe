@@ -1,7 +1,8 @@
 import axios from "axios";
 const BASE_URL = "https://be2-nc-news.herokuapp.com/api/";
 
-export const fetchArticles = (sort_by = "created_at") => {
+export const fetchArticles = sort_by => {
+  console.log(sort_by);
   const path = `articles?sort_by=${sort_by}`;
   return axios.get(`${BASE_URL + path}`).then(({ data }) => data.articles);
 };
