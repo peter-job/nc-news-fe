@@ -5,9 +5,9 @@ import "../styles/ArticleList.css";
 const ArticleList = ({ articles }) => {
   return (
     <ul>
-      {articles.map(article => {
+      {articles.map((article, i) => {
         return (
-          <li key={article.title}>
+          <li key={i}>
             <Article article={article} />
           </li>
         );

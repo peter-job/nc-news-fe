@@ -67,12 +67,8 @@ class Home extends Component {
     }
   }, 1000);
 
-  updateContentOptions = (
-    sort_by = this.state.sort_by,
-    order = this.state.order,
-    limit = this.state.limit
-  ) => {
-    this.setState({ sort_by, order, limit });
+  updateContentOptions = ({ field, value }) => {
+    this.setState({ [field]: value });
   };
 
   render() {

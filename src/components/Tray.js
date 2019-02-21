@@ -13,7 +13,7 @@ class Tray extends Component {
 
   render() {
     const { active } = this.state;
-    const { handler, title, selected } = this.props;
+    const { handler, title, selected, field } = this.props;
     return (
       <div className="Tray noselect" onClick={this.toggleActive}>
         <p>{`${title}: ${selected}`}</p>
@@ -23,7 +23,7 @@ class Tray extends Component {
             <li
               className="Tray-Li"
               key={option.value}
-              onClick={() => handler(option.value)}
+              onClick={() => handler({ field, value: option.value })}
             >
               {option.name}
             </li>

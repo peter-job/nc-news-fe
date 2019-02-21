@@ -27,12 +27,14 @@ const ContentOptions = ({ handler, sort_by, order }) => {
         trayOptions={sortOptions}
         title="Sort By"
         selected={getOptionName(sort_by, sortOptions)}
+        field="sort_by"
       />
       <Tray
         handler={handler}
         trayOptions={orderOptions}
         title="Order"
         selected={getOptionName(order, orderOptions)}
+        field="order"
       />
     </div>
   );

@@ -3,6 +3,6 @@
   grid-template-columns: 50% 50%;
   grid-template-areas: "sort order";
   justify-items: center;
-  background-color: silver;
+  background-color: gold;
   height: 2em;
 }
