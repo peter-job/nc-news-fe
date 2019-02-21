@@ -8,7 +8,7 @@
   background-color: cornflowerblue;
 }
 
-.Navbar .title {
+.Navbar .Title {
   text-align: left;
   background-color: pink;
   font-family: "Merriweather", serif;
@@ -16,6 +16,12 @@
   justify-self: left;
   margin-left: 0.5em;
   margin-right: 0.5em;
+}
+
+.Navbar .Title a:link,
+.Navbar .Title a:visited {
+  color: var(--nav-color);
+  text-decoration: none;
 }
 
 h2 {
