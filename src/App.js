@@ -4,6 +4,7 @@ import "./styles/App.css";
 import "./styles/Router.css";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
+import NoMatch from "./components/NoMatch";
 
 class App extends Component {
   render() {
@@ -12,6 +13,7 @@ class App extends Component {
         <Navbar />
         <Router className="Router">
           <Home path="/" />
+          <NoMatch default />
         </Router>
       </div>
     );
