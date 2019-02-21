@@ -6,22 +6,23 @@ import { throttle } from "lodash";
 class Home extends Component {
   state = {
     articles: [],
-    contentOptions: { sort_by: "created_at", order: "desc", limit: 10 },
+    sort_by: "created_at",
+    order: "desc",
     page: 1,
     hasAllArticles: false
   };
 
   componentDidMount() {
-    const { sort_by } = this.state.contentOptions;
+    const { sort_by } = this.state;
     getArticles(sort_by).then(articles => this.setState({ articles }));
     this.addScrollEventListener();
   }
 
   fetchArticles = () => {
     const { topic } = this.props;
-    const { page } = this.state;
+    const { sort_by, order, page } = this.state;
 
-    getArticles({ topic, page })
+    getArticles({ sort_by, order, p: page })
       .then(newArticles => {
         this.setState(({ page, articles }) => ({
           articles: page === 1 ? newArticles : [...articles, ...newArticles],
@@ -29,7 +30,7 @@ class Home extends Component {
         }));
       })
       .catch(err => {
-        if (err.status === 404) {
+        if (err.response.status === 404) {
           this.setState({ hasAllArticles: true });
         }
       });
@@ -51,11 +52,9 @@ class Home extends Component {
   }
 
   handleScroll = throttle(event => {
-    console.log("scrolling..");
     const { clientHeight, scrollTop, scrollHeight } = event.target;
     const distanceFromBottom = scrollHeight - (clientHeight + scrollTop);
     if (distanceFromBottom < 150) {
-      console.log("time to fetch more articles");
       this.setState(({ page }) => ({ page: ++page }));
     }
   }, 2000);

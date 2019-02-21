@@ -29,7 +29,7 @@ describe("getArticles", () => {
         copy.sort((a, b) => (a.created_at <= b.created_at ? 0 : -1));
         expect(articles).toEqual(copy);
       })
-      .then(() => getArticles("title"))
+      .then(() => getArticles({ sort_by: "title" }))
       .then(articles => {
         const copy = articles.slice();
         copy.sort((a, b) =>
@@ -37,13 +37,13 @@ describe("getArticles", () => {
         );
         expect(articles).toEqual(copy);
       })
-      .then(() => getArticles("votes"))
+      .then(() => getArticles({ sort_by: "votes" }))
       .then(articles => {
         const copy = articles.slice();
         copy.sort((a, b) => (a.votes <= b.votes ? 0 : -1));
         expect(articles).toEqual(copy);
       })
-      .then(() => getArticles("comment_count"))
+      .then(() => getArticles({ sort_by: "comment_count" }))
       .then(articles => {
         const copy = articles.slice();
         copy.sort((a, b) => (a.comment_count <= b.comment_count ? 0 : -1));
