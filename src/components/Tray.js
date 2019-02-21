@@ -13,10 +13,10 @@ class Tray extends Component {
 
   render() {
     const { active } = this.state;
-    const { handler } = this.props;
+    const { handler, title, selected } = this.props;
     return (
       <div className="Tray noselect" onClick={this.toggleActive}>
-        <p>Sort By</p>
+        <p>{`${title}: ${selected}`}</p>
 
         <ul className={`Tray-List-${active ? "Active" : "Inactive"}`}>
           {this.props.trayOptions.map(option => (

@@ -1,0 +1,8 @@
+.ContentOptions {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-areas: "sort order";
+  justify-items: center;
+  background-color: silver;
+  height: 2em;
+}

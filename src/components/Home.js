@@ -21,11 +21,12 @@ class Home extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const { topic, page, hasAllArticles, sort_by, order } = this.state;
-    const topicChange = prevProps.topic !== topic;
+    const { page, hasAllArticles, sort_by, order } = this.state;
+    const topicChange = false; //no topic functionality yet
     const pageChange = prevState.page !== page;
     const sortChange = prevState.sort_by !== sort_by;
     const orderChange = prevState.order !== order;
+
     if (
       ((topicChange || pageChange) && !hasAllArticles) ||
       sortChange ||
@@ -64,7 +65,7 @@ class Home extends Component {
     if (distanceFromBottom < 150) {
       this.setState(({ page }) => ({ page: ++page }));
     }
-  }, 2000);
+  }, 1000);
 
   updateContentOptions = (
     sort_by = this.state.sort_by,
@@ -75,10 +76,14 @@ class Home extends Component {
   };
 
   render() {
-    const { articles } = this.state;
+    const { articles, sort_by, order } = this.state;
     return (
       <div className="ArticleList">
-        <ContentOptions handler={this.updateContentOptions} />
+        <ContentOptions
+          handler={this.updateContentOptions}
+          sort_by={sort_by}
+          order={order}
+        />
         <ArticleList articles={articles} />
       </div>
     );

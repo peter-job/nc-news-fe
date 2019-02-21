@@ -26,7 +26,7 @@ class Vote extends Component {
   };
 
   render() {
-    const { votes, path } = this.props;
+    const { votes } = this.props;
     const { voted } = this.state;
     return (
       <Fragment>
