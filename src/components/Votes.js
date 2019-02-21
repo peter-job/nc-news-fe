@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-// import patchRequest from api
+import { patchVotes } from "../api";
 
 class Vote extends Component {
   //save this to localstorage
@@ -7,19 +7,22 @@ class Vote extends Component {
     voted: 0
   };
 
-  incVotes = path => {
-    const { voted } = this.state;
-    if (voted < 1) {
-      this.setState({ voted: voted + 1 });
-      //  patchRequest(path, { inc_votes: 1 });
+  handleVote = vote => {
+    let { voted } = this.state;
+    const { article_id, comment_id } = this.props;
+    let update = 0;
+    if (voted === vote) {
+      voted = 0;
+      update = -vote;
+    } else if (voted === -vote) {
+      voted = vote;
+      update = vote * 2;
+    } else {
+      voted = vote;
+      update = vote;
     }
-  };
-  decVotes = path => {
-    const { voted } = this.state;
-    if (voted > -1) {
-      this.setState({ voted: voted - 1 });
-      //  patchRequest(path, { inc_votes: -1 });
-    }
+    this.setState({ voted });
+    patchVotes(update, article_id, comment_id);
   };
 
   render() {
@@ -29,7 +32,7 @@ class Vote extends Component {
       <Fragment>
         <span
           className={`up noselect ${voted > 0 ? "Voted" : ""}`}
-          onClick={() => this.incVotes(path)}
+          onClick={() => this.handleVote(1)}
         >
           <i className="fi-arrow-up" />{" "}
         </span>
@@ -38,7 +41,7 @@ class Vote extends Component {
 
         <span
           className={`down noselect ${voted < 0 ? "Voted" : ""}`}
-          onClick={() => this.decVotes(path)}
+          onClick={() => this.handleVote(-1)}
         >
           <i className="fi-arrow-down" />{" "}
         </span>

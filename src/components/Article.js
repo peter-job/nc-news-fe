@@ -26,7 +26,7 @@ const Article = ({ article }) => {
         <span>{article.title}</span>
       </div>
       <div className="Votes">
-        <Votes votes={article.votes} path={`articles/${article.article_id}`} />
+        <Votes votes={article.votes} article_id={article.article_id} />
       </div>
     </div>
   );
