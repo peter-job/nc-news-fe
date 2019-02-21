@@ -1,0 +1,31 @@
+.Tray {
+  border: 1px solid lightskyblue;
+  cursor: pointer;
+  background-color: white;
+  z-index: 1;
+}
+
+.Tray p {
+  margin: 0.25em;
+}
+
+.Tray-List-Inactive {
+  padding: 0px;
+  margin: 0px;
+  border: 1px solid var(--detail-color);
+  height: 0px;
+  background-color: white;
+  visibility: hidden;
+}
+
+.Tray-List-Active {
+  position: relative;
+  border: 1px solid var(--item-color);
+  padding: 1px;
+  margin: 0px;
+  background-color: white;
+}
+
+.Tray-Li {
+  padding: 5px;
+}

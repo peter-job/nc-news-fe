@@ -1,7 +1,8 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import ArticleList from "./ArticleList";
 import { getArticles } from "../api";
 import { throttle } from "lodash";
+import ContentOptions from "./ContentOptions";
 
 class Home extends Component {
   state = {
@@ -9,6 +10,7 @@ class Home extends Component {
     sort_by: "created_at",
     order: "desc",
     page: 1,
+    topic: null,
     hasAllArticles: false
   };
 
@@ -18,8 +20,22 @@ class Home extends Component {
     this.addScrollEventListener();
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    const { topic, page, hasAllArticles, sort_by, order } = this.state;
+    const topicChange = prevProps.topic !== topic;
+    const pageChange = prevState.page !== page;
+    const sortChange = prevState.sort_by !== sort_by;
+    const orderChange = prevState.order !== order;
+    if (
+      ((topicChange || pageChange) && !hasAllArticles) ||
+      sortChange ||
+      orderChange
+    ) {
+      this.fetchArticles();
+    }
+  }
+
   fetchArticles = () => {
-    const { topic } = this.props;
     const { sort_by, order, page } = this.state;
 
     getArticles({ sort_by, order, p: page })
@@ -36,15 +52,6 @@ class Home extends Component {
       });
   };
 
-  componentDidUpdate(prevProps, prevState) {
-    const { topic, page, hasAllArticles } = this.state;
-    const topicChange = prevProps.topic !== topic;
-    const pageChange = prevState.page !== page;
-    if ((topicChange || pageChange) && !hasAllArticles) {
-      this.fetchArticles();
-    }
-  }
-
   addScrollEventListener() {
     document
       .querySelector(".ArticleList")
@@ -59,10 +66,19 @@ class Home extends Component {
     }
   }, 2000);
 
+  updateContentOptions = (
+    sort_by = this.state.sort_by,
+    order = this.state.order,
+    limit = this.state.limit
+  ) => {
+    this.setState({ sort_by, order, limit });
+  };
+
   render() {
     const { articles } = this.state;
     return (
       <div className="ArticleList">
+        <ContentOptions handler={this.updateContentOptions} />
         <ArticleList articles={articles} />
       </div>
     );
