@@ -1,13 +1,13 @@
 import axios from "axios";
 const BASE_URL = "https://be2-nc-news.herokuapp.com/api/";
 
-export const fetchArticles = sort_by => {
+export const getArticles = sort_by => {
   console.log(sort_by);
   const path = `articles?sort_by=${sort_by}`;
   return axios.get(`${BASE_URL + path}`).then(({ data }) => data.articles);
 };
 
-export const fetchArticleById = article_id => {
+export const getArticleById = article_id => {
   const path = `articles/` + article_id;
   return axios.get(`${BASE_URL + path}`).then(({ data }) => data.article);
 };
@@ -22,17 +22,17 @@ export const patchVotes = (voted, article_id, comment_id) => {
     .then(({ data }) => (data.article ? data.article : data.comment));
 };
 
-export const fetchCommentsByArticleId = article_id => {
+export const getCommentsByArticleId = article_id => {
   const path = `articles/${article_id}/comments`;
   return axios.get(`${BASE_URL + path}`).then(({ data }) => data.comments);
 };
 
-export const fetchUserByUsername = username => {
+export const getUserByUsername = username => {
   const path = `users/${username}`;
   return axios.get(`${BASE_URL + path}`).then(({ data }) => data.user);
 };
 
-export const fetchUsers = () => {
+export const getUsers = () => {
   const path = `users`;
   return axios.get(`${BASE_URL + path}`).then(({ data }) => data.users);
 };

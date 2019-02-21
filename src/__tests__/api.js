@@ -1,15 +1,15 @@
 const {
-  fetchArticles,
-  fetchArticleById,
+  getArticles,
+  getArticleById,
   patchVotes,
-  fetchCommentsByArticleId,
-  fetchUserByUsername,
-  fetchUsers
+  getCommentsByArticleId,
+  getUserByUsername,
+  getUsers
 } = require("../api");
 
-describe("fetchArticles", () => {
+describe("getArticles", () => {
   it("returns a list of articles from the nc-news backend", () => {
-    return fetchArticles().then(articles => {
+    return getArticles().then(articles => {
       expect(articles.length).toEqual(10);
       articles.forEach(article => {
         expect(article).toHaveProperty("article_id");
@@ -23,13 +23,13 @@ describe("fetchArticles", () => {
   });
 
   it("accepts a sort_by parameter for articles returned, default value is 'created_at'", () => {
-    return fetchArticles()
+    return getArticles()
       .then(articles => {
         const copy = articles.slice();
         copy.sort((a, b) => (a.created_at <= b.created_at ? 0 : -1));
         expect(articles).toEqual(copy);
       })
-      .then(() => fetchArticles("title"))
+      .then(() => getArticles("title"))
       .then(articles => {
         const copy = articles.slice();
         copy.sort((a, b) =>
@@ -37,13 +37,13 @@ describe("fetchArticles", () => {
         );
         expect(articles).toEqual(copy);
       })
-      .then(() => fetchArticles("votes"))
+      .then(() => getArticles("votes"))
       .then(articles => {
         const copy = articles.slice();
         copy.sort((a, b) => (a.votes <= b.votes ? 0 : -1));
         expect(articles).toEqual(copy);
       })
-      .then(() => fetchArticles("comment_count"))
+      .then(() => getArticles("comment_count"))
       .then(articles => {
         const copy = articles.slice();
         copy.sort((a, b) => (a.comment_count <= b.comment_count ? 0 : -1));
@@ -52,9 +52,9 @@ describe("fetchArticles", () => {
   });
 });
 
-describe("fetchArticleById", () => {
+describe("getArticleById", () => {
   it("returns an article with the given article_id", () => {
-    return fetchArticleById(1).then(article => {
+    return getArticleById(1).then(article => {
       expect(article).toHaveProperty("article_id", 1);
       expect(article).toHaveProperty("author");
       expect(article).toHaveProperty("title");
@@ -69,7 +69,7 @@ describe("fetchArticleById", () => {
 describe("patchVotes", () => {
   it("updates an articles votes if no comment_id is provided", () => {
     let votes = 0;
-    return fetchArticleById(1)
+    return getArticleById(1)
       .then(article => {
         votes = article.votes;
         return patchVotes(1, 1);
@@ -89,7 +89,7 @@ describe("patchVotes", () => {
   it("updates a comments votes if a comment_id is provided", () => {
     let votes = 0;
     let comment_id = 0;
-    return fetchCommentsByArticleId(1)
+    return getCommentsByArticleId(1)
       .then(comments => {
         comment_id = comments[0].comment_id;
         votes = comments[0].votes;
@@ -109,9 +109,9 @@ describe("patchVotes", () => {
   });
 });
 
-describe("fetchCommentsByArticleId", () => {
+describe("getCommentsByArticleId", () => {
   it("returns comments for the given article_id", () => {
-    return fetchCommentsByArticleId(1).then(comments => {
+    return getCommentsByArticleId(1).then(comments => {
       expect(comments.length).toBeGreaterThan(1);
       comments.forEach(comment => {
         expect(comment).toHaveProperty("comment_id");
@@ -124,9 +124,9 @@ describe("fetchCommentsByArticleId", () => {
   });
 });
 
-describe("fetchUsers", () => {
+describe("getUsers", () => {
   it("returns an array of users", () => {
-    return fetchUsers().then(users => {
+    return getUsers().then(users => {
       expect(users.length).toBeGreaterThan(1);
       users.forEach(user => {
         expect(user).toHaveProperty("username");
@@ -137,10 +137,10 @@ describe("fetchUsers", () => {
   });
 });
 
-describe("fetchUserByUsername", () => {
+describe("getUserByUsername", () => {
   it("returns a user for the given username", () => {
-    return fetchUsers()
-      .then(users => fetchUserByUsername(users[0].username))
+    return getUsers()
+      .then(users => getUserByUsername(users[0].username))
       .then(user => {
         expect(user).toHaveProperty("username");
         expect(user).toHaveProperty("avatar_url");
