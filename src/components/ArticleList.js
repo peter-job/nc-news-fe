@@ -4,17 +4,15 @@ import "../styles/ArticleList.css";
 
 const ArticleList = ({ articles }) => {
   return (
-    <div className="ArticleList">
-      <ul>
-        {articles.map(article => {
-          return (
-            <li key={article.title}>
-              <Article article={article} />
-            </li>
-          );
-        })}
-      </ul>
-    </div>
+    <ul>
+      {articles.map(article => {
+        return (
+          <li key={article.title}>
+            <Article article={article} />
+          </li>
+        );
+      })}
+    </ul>
   );
 };
 
