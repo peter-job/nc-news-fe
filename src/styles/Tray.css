@@ -27,3 +27,8 @@
 .Tray-Li {
   padding: 5px;
 }
+
+.Tray-Li:hover {
+  background-color: silver;
+  color: red;
+}

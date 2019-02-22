@@ -5,6 +5,7 @@ import "./styles/Router.css";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import NoMatch from "./components/NoMatch";
+import ArticlePage from "./components/ArticlePage";
 
 class App extends Component {
   render() {
@@ -13,6 +14,7 @@ class App extends Component {
         <Navbar />
         <Router className="Router">
           <Home path="/" />
+          <ArticlePage path="/articles/:id" />
           <NoMatch default />
         </Router>
       </div>
