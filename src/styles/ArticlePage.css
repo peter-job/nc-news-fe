@@ -1,0 +1,16 @@
+.CommentsHeader {
+  background-color: white;
+}
+
+h3 {
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+.ArticlePage {
+  list-style: none;
+  background-color: lightgray;
+  height: 100%;
+  overflow-y: auto;
+}

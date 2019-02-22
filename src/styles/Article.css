@@ -1,17 +1,19 @@
 .Article {
+  background-color: white;
+
   display: grid;
   margin: 1px;
   padding: 0.5em;
-  grid-template-rows: 1fr 2em;
+  grid-template-rows: auto 2em 1fr;
   grid-template-columns: 2em 1fr 4em;
   grid-template-areas:
     "title title title"
-    "avatar author votes";
+    "avatar author votes"
+    "body body body";
 }
 
 li {
   list-style-type: none;
-  background-color: white;
   margin-bottom: 4px;
   margin-top: 4px;
 }
@@ -64,6 +66,14 @@ li {
   font-size: 0.8em;
   align-self: center;
   background-color: paleturquoise;
+}
+
+.Article .Body {
+  grid-area: body;
+  background-color: peachpuff;
+  font-family: "Merriweather", serif;
+  font-weight: lighter;
+  margin-top: 1em;
 }
 
 .Votes {

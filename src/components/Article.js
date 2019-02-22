@@ -4,7 +4,7 @@ import "../styles/Article.css";
 import Moment from "moment";
 import Votes from "./Votes";
 
-const Article = ({ article }) => {
+const Article = ({ article, full }) => {
   return (
     <div className="Article">
       <div className="avatar">
@@ -29,6 +29,7 @@ const Article = ({ article }) => {
       <div className="Votes">
         <Votes votes={article.votes} article_id={article.article_id} />
       </div>
+      {full && <div className="Body">{article.body}</div>}
     </div>
   );
 };
