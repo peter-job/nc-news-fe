@@ -1,4 +1,4 @@
-import React, { Fragment, Component } from "react";
+import React, { Component } from "react";
 import Article from "./Article";
 import Comment from "./Comment";
 import { getArticleById, getCommentsByArticleId } from "../api";
@@ -45,7 +45,6 @@ class ArticlePage extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const { id } = this.props;
     const { page, hasAllComments, sort_by, order, isLoading } = this.state;
     const pageChange = prevState.page !== page;
     const sortChange = prevState.sort_by !== sort_by;
