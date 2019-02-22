@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { patchVotes } from "../api";
+import "../css/foundation-icons.css";
 
 class Vote extends Component {
   //save this to localstorage
