@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+import "../styles/Auth.css";
 
 class Auth extends Component {
   state = {
@@ -22,9 +23,9 @@ class Auth extends Component {
       return <Fragment>{this.props.children}</Fragment>;
     }
     return (
-      <div>
+      <div className="Auth">
         <form onSubmit={this.handleSubmit}>
-          <label>Enter Username</label>
+          <label>Username: </label>
           <input onChange={this.handleChange} value={this.state.username} />
           <button type="submit">Log in</button>
         </form>
