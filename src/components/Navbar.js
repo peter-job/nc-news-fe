@@ -3,11 +3,11 @@ import "../styles/Navbar.css";
 import UserIcon from "./UserIcon";
 import Title from "./Title";
 
-const Navbar = ({ username }) => {
+const Navbar = ({ user }) => {
   return (
     <div className="Navbar">
       <Title />
-      <UserIcon username={username} />
+      <UserIcon user={user} />
     </div>
   );
 };

@@ -39,7 +39,7 @@ class App extends Component {
     const { user } = this.state;
     return (
       <div className="App">
-        <Navbar username={user ? user.username : ""} />
+        <Navbar user={user} />
         <Auth login={this.setUser} user={this.state.user}>
           <Router className="Router">
             <Home path="/" />
