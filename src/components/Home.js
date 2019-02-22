@@ -14,6 +14,19 @@ class Home extends Component {
     hasAllArticles: false
   };
 
+  sortOptions = [
+    { value: "title", name: "Title" },
+    { value: "topic", name: "Topic" },
+    { value: "created_at", name: "Date" },
+    { value: "votes", name: "Votes" },
+    { value: "comment_count", name: "Comments" }
+  ];
+
+  orderOptions = [
+    { value: "asc", name: "Ascending" },
+    { value: "desc", name: "Descending" }
+  ];
+
   componentDidMount() {
     const { sort_by } = this.state;
     getArticles(sort_by).then(articles => this.setState({ articles }));
@@ -79,6 +92,8 @@ class Home extends Component {
           handler={this.updateContentOptions}
           sort_by={sort_by}
           order={order}
+          sortOptions={this.sortOptions}
+          orderOptions={this.orderOptions}
         />
         <ArticleList articles={articles} />
       </div>

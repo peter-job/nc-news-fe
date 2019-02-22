@@ -24,9 +24,9 @@ export const patchVotes = (voted, article_id, comment_id) => {
     .then(({ data }) => (data.article ? data.article : data.comment));
 };
 
-export const getCommentsByArticleId = article_id => {
+export const getCommentsByArticleId = (article_id, params) => {
   const path = `articles/${article_id}/comments`;
-  return request.get(path).then(({ data }) => data.comments);
+  return request.get(path, { params }).then(({ data }) => data.comments);
 };
 
 export const getUserByUsername = username => {
