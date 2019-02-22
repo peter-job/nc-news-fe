@@ -16,6 +16,7 @@ class Home extends Component {
 
   sortOptions = [
     { value: "title", name: "Title" },
+    { value: "articles.username", name: "User" },
     { value: "topic", name: "Topic" },
     { value: "created_at", name: "Date" },
     { value: "votes", name: "Votes" },
