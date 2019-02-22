@@ -14,6 +14,21 @@ class App extends Component {
     user: null
   };
 
+  componentDidMount() {
+    const retrievedState = localStorage.getItem("state");
+    if (retrievedState) {
+      this.setState(JSON.parse(retrievedState));
+    }
+  }
+
+  componentDidUpdate() {
+    this.handleSave();
+  }
+
+  handleSave = () => {
+    localStorage.setItem("state", JSON.stringify(this.state));
+  };
+
   setUser = username => {
     getUserByUsername(username).then(user => {
       this.setState({ user });
