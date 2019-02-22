@@ -1,0 +1,96 @@
+.Comment {
+  background-color: white;
+
+  display: grid;
+  margin: 1px;
+  padding: 0.5em;
+  grid-template-rows: 2em 1fr;
+  grid-template-columns: 2em 1fr 4em;
+  grid-template-areas:
+    "avatar author votes"
+    "body body body";
+}
+
+li {
+  list-style-type: none;
+  margin-bottom: 4px;
+  margin-top: 4px;
+}
+
+.Comment > * {
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
+}
+
+.Comment .avatar {
+  grid-area: avatar;
+  margin: 0;
+  background-color: palevioletred;
+}
+
+.Comment .avatar img {
+  height: 100%;
+  width: 100%;
+  background-color: palevioletred;
+  border-radius: 50%;
+}
+
+.Comment .body {
+  grid-area: body;
+  font-family: "Merriweather", serif;
+  text-align: left;
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
+  background-color: peachpuff;
+}
+
+.Comment .title a:link,
+.Comment .title a:visited {
+  color: black;
+  text-decoration: none;
+}
+
+.Comment .topic {
+  grid-area: topic;
+  margin-top: 0.125em;
+  margin-left: 0.125em;
+  font-size: 0.8em;
+}
+
+.Comment .author {
+  grid-area: author;
+  color: darkslategray;
+  margin: 0.5em;
+  margin-left: 0.5em;
+  font-size: 0.8em;
+  align-self: center;
+  background-color: paleturquoise;
+}
+
+.Votes {
+  grid-area: votes;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: "down count up";
+  background-color: palegreen;
+  justify-items: center;
+  align-items: center;
+  margin: 0;
+  color: darkslategray;
+}
+
+.Votes .down {
+  grid-area: down;
+}
+
+.Votes .count {
+  grid-area: count;
+}
+
+.Votes .up {
+  grid-area: up;
+}
+
+.Votes .Voted {
+  color: orange;
+}
