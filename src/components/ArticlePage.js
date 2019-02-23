@@ -50,8 +50,12 @@ class ArticlePage extends Component {
     const sortChange = prevState.sort_by !== sort_by;
     const orderChange = prevState.order !== order;
 
-    if ((pageChange && !hasAllComments) || sortChange || orderChange) {
+    if (pageChange && !hasAllComments) {
       this.fetchComments();
+    }
+
+    if (sortChange || orderChange) {
+      //
     }
 
     if (prevState.isLoading === true && isLoading === false) {
@@ -62,7 +66,6 @@ class ArticlePage extends Component {
   fetchComments = () => {
     const { sort_by, order, page } = this.state;
     const { id } = this.props;
-    console.log(page);
     getCommentsByArticleId(id, { sort_by, order, p: page })
       .then(newComments => {
         this.setState(({ page, comments }) => ({
@@ -72,7 +75,10 @@ class ArticlePage extends Component {
       })
       .catch(err => {
         if (err.response.status === 404) {
-          this.setState({ hasAllComments: true });
+          console.log("404");
+          this.setState(({ page }) => {
+            return { hasAllComments: true, page: page - 1 };
+          });
         }
       });
   };
@@ -94,11 +100,15 @@ class ArticlePage extends Component {
   }, 1000);
 
   updateContentOptions = ({ field, value }) => {
-    this.setState({ [field]: value });
-  };
-
-  updateContentOptions = ({ field, value }) => {
-    this.setState({ [field]: value });
+    this.setState(prev => {
+      let page = prev.page;
+      let hasAllComments = prev.hasAllComments;
+      if (prev[field] !== value) {
+        page = 1;
+        hasAllComments = false;
+      }
+      return { [field]: value, page, hasAllComments };
+    });
   };
 
   render() {

@@ -30,9 +30,7 @@ class App extends Component {
   };
 
   setUser = username => {
-    getUserByUsername(username).then(user => {
-      this.setState({ user });
-    });
+    getUserByUsername(username).then(user => this.setState({ user }));
   };
 
   render() {
@@ -40,13 +38,12 @@ class App extends Component {
     return (
       <div className="App">
         <Navbar user={user} />
-        <Auth login={this.setUser} user={this.state.user}>
-          <Router className="Router">
-            <Home path="/" />
-            <ArticlePage path="/articles/:id" />
-            <NoMatch default />
-          </Router>
-        </Auth>
+        <Router className="Router">
+          <Auth path="/login" login={this.setUser} user={this.state.user} />
+          <Home path="/" />
+          <ArticlePage path="/articles/:id" />
+          <NoMatch default />
+        </Router>
       </div>
     );
   }

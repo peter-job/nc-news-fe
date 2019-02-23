@@ -82,7 +82,15 @@ class Home extends Component {
   }, 1000);
 
   updateContentOptions = ({ field, value }) => {
-    this.setState({ [field]: value });
+    this.setState(prev => {
+      let page = prev.page;
+      let hasAllComments = prev.hasAllComments;
+      if (prev[field] !== value) {
+        page = 1;
+        hasAllComments = false;
+      }
+      return { [field]: value, page, hasAllComments };
+    });
   };
 
   render() {
