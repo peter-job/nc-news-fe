@@ -134,7 +134,11 @@ class ArticlePage extends Component {
         />
         <div className="CommentList">
           {comments.map(comment => (
-            <Comment key={comment.comment_id} comment={comment} />
+            <Comment
+              key={comment.comment_id}
+              comment={comment}
+              article_id={article.article_id}
+            />
           ))}
         </div>
       </div>
