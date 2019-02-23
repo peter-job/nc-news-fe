@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { navigate } from "@reach/router";
 import "../styles/Auth.css";
 
