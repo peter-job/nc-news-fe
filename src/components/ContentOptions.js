@@ -1,5 +1,5 @@
 import React from "react";
-import Tray from "./Tray";
+import Dropdown from "./Dropdown";
 import "../styles/ContentOptions.css";
 
 const ContentOptions = ({
@@ -17,14 +17,14 @@ const ContentOptions = ({
 
   return (
     <div className="ContentOptions">
-      <Tray
+      <Dropdown
         handler={handler}
         trayOptions={sortOptions}
         title="Sort By"
         selected={getOptionName(sort_by, sortOptions)}
         field="sort_by"
       />
-      <Tray
+      <Dropdown
         handler={handler}
         trayOptions={orderOptions}
         title="Order"

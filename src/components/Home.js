@@ -79,7 +79,7 @@ class Home extends Component {
     const { clientHeight, scrollTop, scrollHeight } = event.target;
     const distanceFromBottom = scrollHeight - (clientHeight + scrollTop);
     if (distanceFromBottom < 150) {
-      this.setState(({ page }) => ({ page: ++page }));
+      this.setState(({ page }) => ({ page: page + 1 }));
     }
   }, 1000);
 

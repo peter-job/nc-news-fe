@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import "../styles/Tray.css";
+import "../styles/Dropdown.css";
 
-class Tray extends Component {
+class Dropdown extends Component {
   state = {
     active: false
   };
@@ -15,13 +15,13 @@ class Tray extends Component {
     const { active } = this.state;
     const { handler, title, selected, field } = this.props;
     return (
-      <div className="Tray noselect" onClick={this.toggleActive}>
+      <div className="Dropdown noselect" onClick={this.toggleActive}>
         <p>{`${title}: ${selected}`}</p>
 
-        <ul className={`Tray-List-${active ? "Active" : "Inactive"}`}>
+        <ul className={`Dropdown-List-${active ? "Active" : "Inactive"}`}>
           {this.props.trayOptions.map(option => (
             <li
-              className="Tray-Li"
+              className="Dropdown-Li"
               key={option.value}
               onClick={() => handler({ field, value: option.value })}
             >
@@ -34,4 +34,4 @@ class Tray extends Component {
   }
 }
 
-export default Tray;
+export default Dropdown;
