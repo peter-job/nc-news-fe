@@ -33,7 +33,11 @@ const Article = ({ article, full }) => {
       <div className="Votes">
         <Votes votes={article.votes} article_id={article.article_id} />
       </div>
-      {full && <div className="Body">{article.body}</div>}
+      {full && (
+        <div className="Body">
+          <p>{article.body}</p>
+        </div>
+      )}
     </div>
   );
 };
