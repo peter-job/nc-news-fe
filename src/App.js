@@ -30,7 +30,7 @@ class App extends Component {
   };
 
   setUser = username => {
-    getUserByUsername(username).then(user => this.setState({ user }));
+    return getUserByUsername(username).then(user => this.setState({ user }));
   };
 
   render() {
