@@ -62,7 +62,9 @@ class Home extends Component {
       })
       .catch(err => {
         if (err.response.status === 404) {
-          this.setState({ hasAllArticles: true });
+          this.setState(({ page }) => {
+            return { hasAllArticles: true, page: page - 1 };
+          });
         }
       });
   };
@@ -84,12 +86,12 @@ class Home extends Component {
   updateContentOptions = ({ field, value }) => {
     this.setState(prev => {
       let page = prev.page;
-      let hasAllComments = prev.hasAllComments;
+      let hasAllArticles = prev.hasAllArticles;
       if (prev[field] !== value) {
         page = 1;
-        hasAllComments = false;
+        hasAllArticles = false;
       }
-      return { [field]: value, page, hasAllComments };
+      return { [field]: value, page, hasAllArticles };
     });
   };
 
