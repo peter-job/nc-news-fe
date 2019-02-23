@@ -50,12 +50,8 @@ class ArticlePage extends Component {
     const sortChange = prevState.sort_by !== sort_by;
     const orderChange = prevState.order !== order;
 
-    if (pageChange && !hasAllComments) {
+    if ((pageChange && !hasAllComments) || sortChange || orderChange) {
       this.fetchComments();
-    }
-
-    if (sortChange || orderChange) {
-      //
     }
 
     if (prevState.isLoading === true && isLoading === false) {
@@ -75,7 +71,6 @@ class ArticlePage extends Component {
       })
       .catch(err => {
         if (err.response.status === 404) {
-          console.log("404");
           this.setState(({ page }) => {
             return { hasAllComments: true, page: page - 1 };
           });
@@ -84,14 +79,12 @@ class ArticlePage extends Component {
   };
 
   addScrollEventListener() {
-    console.log("adding");
     document
       .querySelector(".ArticlePage")
       .addEventListener("scroll", this.handleScroll);
   }
 
   handleScroll = throttle(event => {
-    console.log("scrolling");
     const { clientHeight, scrollTop, scrollHeight } = event.target;
     const distanceFromBottom = scrollHeight - (clientHeight + scrollTop);
     if (distanceFromBottom < 150) {
@@ -140,8 +133,8 @@ class ArticlePage extends Component {
           orderOptions={this.orderOptions}
         />
         <div className="CommentList">
-          {comments.map((comment, i) => (
-            <Comment key={i} comment={comment} />
+          {comments.map(comment => (
+            <Comment key={comment.comment_id} comment={comment} />
           ))}
         </div>
       </div>
