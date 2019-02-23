@@ -6,3 +6,29 @@
 .UserIcon a:visited {
   text-decoration: none;
 }
+
+.UserIcon {
+  grid-area: user;
+  display: grid;
+  grid-template-columns: 1fr 2em;
+  margin: 0.5em;
+  justify-self: right;
+  justify-content: center;
+  align-items: center;
+}
+
+.UserIcon img {
+  height: 2em;
+  width: 2em;
+  border-radius: 50%;
+}
+
+.UserIcon .userName {
+  color: white;
+  padding-right: 0.5em;
+}
+
+.UserIcon a {
+  justify-self: center;
+  display: flex;
+}

@@ -5,10 +5,10 @@ import Title from "./Title";
 
 const Navbar = ({ user }) => {
   return (
-    <div className="Navbar">
+    <nav className="Navbar">
       <Title />
       <UserIcon user={user} />
-    </div>
+    </nav>
   );
 };
 
