@@ -24,7 +24,11 @@ const Article = ({ article, full }) => {
         <span />
       </div>
       <div className="title">
-        <Link to={`/articles/${article.article_id}`}>{article.title}</Link>
+        {full ? (
+          <span>{article.title}</span>
+        ) : (
+          <Link to={`/articles/${article.article_id}`}>{article.title}</Link>
+        )}
       </div>
       <div className="Votes">
         <Votes votes={article.votes} article_id={article.article_id} />
