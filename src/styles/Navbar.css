@@ -1,7 +1,7 @@
 .Navbar {
   grid-area: navbar;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr auto;
   grid-template-areas: "title user";
   padding: 0;
   margin: 0;
@@ -10,12 +10,12 @@
 
 .Navbar .Title {
   text-align: left;
-  background-color: pink;
+  background-color: antiquewhite;
   font-family: "Merriweather", serif;
   align-self: center;
   justify-self: left;
-  margin-left: 0.5em;
-  margin-right: 0.5em;
+  margin: 0.5em;
+  padding: 0.25em;
 }
 
 .Navbar .Title a:link,
@@ -31,25 +31,4 @@ h2 {
   margin-right: 0;
   justify-self: left;
   font-weight: lighter;
-}
-
-.UserIcon {
-  grid-area: user;
-  display: grid;
-  grid-template-columns: 1fr 2em;
-  margin: 0.5em;
-  justify-self: right;
-  justify-content: center;
-  align-items: center;
-}
-
-.UserIcon img {
-  height: 2em;
-  width: 2em;
-  border-radius: 50%;
-}
-
-.UserIcon .userName {
-  color: white;
-  margin-right: 0.5em;
 }
