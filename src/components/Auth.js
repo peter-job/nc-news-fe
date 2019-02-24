@@ -10,7 +10,7 @@ class Auth extends Component {
 
   handleChange = event => {
     const username = event.target.value;
-    this.setState({ username });
+    this.setState({ username, notFound: false });
   };
 
   handleSubmit = event => {
@@ -23,6 +23,14 @@ class Auth extends Component {
   };
 
   render() {
+    if (this.props.user) {
+      return (
+        <div className="Auth">
+          <p>Hi, {this.props.user.name}</p>
+          <button onClick={this.props.logout}>Log out</button>
+        </div>
+      );
+    }
     return (
       <div className="Auth">
         <form onSubmit={this.handleSubmit}>

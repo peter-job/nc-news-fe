@@ -39,7 +39,12 @@ class App extends Component {
       <div className="App">
         <Navbar user={user} />
         <Router className="Router">
-          <Auth path="/login" login={this.setUser} user={this.state.user} />
+          <Auth
+            path="/login"
+            login={this.setUser}
+            logout={() => this.setState({ user: null })}
+            user={this.state.user}
+          />
           <Home path="/" />
           <ArticlePage path="/articles/:id" />
           <NoMatch default />
