@@ -38,3 +38,8 @@ export const getUsers = () => {
   const path = `users`;
   return request.get(path).then(({ data }) => data.users);
 };
+
+export const getTopics = () => {
+  const path = "topics";
+  return request.get(path).then(({ data }) => data.topics);
+};

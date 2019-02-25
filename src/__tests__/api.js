@@ -4,7 +4,8 @@ const {
   patchVotes,
   getCommentsByArticleId,
   getUserByUsername,
-  getUsers
+  getUsers,
+  getTopics
 } = require("../api");
 
 describe("getArticles", () => {
@@ -146,5 +147,17 @@ describe("getUserByUsername", () => {
         expect(user).toHaveProperty("avatar_url");
         expect(user).toHaveProperty("name");
       });
+  });
+});
+
+describe("getTopics", () => {
+  it("returns a list of topics", () => {
+    return getTopics().then(topics => {
+      expect(topics.length).toBeGreaterThan(1);
+      topics.forEach(topic => {
+        expect(topic).toHaveProperty("slug");
+        expect(topic).toHaveProperty("description");
+      });
+    });
   });
 });
