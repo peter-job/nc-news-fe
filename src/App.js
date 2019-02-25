@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Router } from "@reach/router";
+import { Router, navigate } from "@reach/router";
 import "./styles/App.css";
 import "./styles/Router.css";
 import Auth from "./components/Auth";
@@ -11,8 +11,14 @@ import { getUserByUsername } from "./api";
 
 class App extends Component {
   state = {
-    user: null
+    user: null,
+    page: "Home"
   };
+
+  navOptions = [
+    { value: "/", name: "Home" },
+    { value: "/login", name: "Login" }
+  ];
 
   componentDidMount() {
     const retrievedState = localStorage.getItem("state");
@@ -33,11 +39,21 @@ class App extends Component {
     return getUserByUsername(username).then(user => this.setState({ user }));
   };
 
+  handleNavbar = ({ field, value, name }) => {
+    this.setState({ page: name });
+    navigate(value);
+  };
+
   render() {
-    const { user } = this.state;
+    const { user, page } = this.state;
     return (
       <div className="App">
-        <Navbar user={user} />
+        <Navbar
+          user={user}
+          navOptions={this.navOptions}
+          handler={this.handleNavbar}
+          selected={page}
+        />
         <Router className="Router">
           <Auth
             path="/login"

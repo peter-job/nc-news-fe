@@ -13,17 +13,19 @@ class Dropdown extends Component {
 
   render() {
     const { active } = this.state;
-    const { handler, title, selected, field } = this.props;
+    const { handler, title, selected, field, trayOptions } = this.props;
     return (
       <div className="Dropdown noselect" onClick={this.toggleActive}>
-        <p>{`${title}: ${selected}`}</p>
+        <p>{`${title}${selected}`}</p>
 
         <ul className={`Dropdown-List-${active ? "Active" : "Inactive"}`}>
-          {this.props.trayOptions.map(option => (
+          {trayOptions.map(option => (
             <li
               className="Dropdown-Li"
               key={option.value}
-              onClick={() => handler({ field, value: option.value })}
+              onClick={() =>
+                handler({ field, value: option.value, name: option.name })
+              }
             >
               {option.name}
             </li>

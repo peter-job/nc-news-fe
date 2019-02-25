@@ -20,14 +20,14 @@ const ContentOptions = ({
       <Dropdown
         handler={handler}
         trayOptions={sortOptions}
-        title="Sort By"
+        title="Sort By: "
         selected={getOptionName(sort_by, sortOptions)}
         field="sort_by"
       />
       <Dropdown
         handler={handler}
         trayOptions={orderOptions}
-        title="Order"
+        title="Order: "
         selected={getOptionName(order, orderOptions)}
         field="order"
       />
