@@ -43,3 +43,10 @@ export const getTopics = () => {
   const path = "topics";
   return request.get(path).then(({ data }) => data.topics);
 };
+
+export const postArticle = (topic, title, body, username) => {
+  const path = `topics/${topic}/articles`;
+  return request
+    .post(path, { title, body, username })
+    .then(({ data }) => data.article);
+};

@@ -5,7 +5,8 @@ const {
   getCommentsByArticleId,
   getUserByUsername,
   getUsers,
-  getTopics
+  getTopics,
+  postArticle
 } = require("../api");
 
 describe("getArticles", () => {
@@ -158,6 +159,27 @@ describe("getTopics", () => {
         expect(topic).toHaveProperty("slug");
         expect(topic).toHaveProperty("description");
       });
+    });
+  });
+});
+
+describe("postArticle", () => {
+  it("posts an article and returns if successful", () => {
+    const username = "jessjelly";
+    const title = "A New Way to Code.";
+    const body =
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nulla diam, efficitur vel eros convallis, feugiat convallis eros. Vivamus vel leo nec dolor maximus faucibus sed sit amet metus. Integer aliquet turpis elit, sed fringilla diam commodo ut. Aliquam quis est augue. Nam non enim eget dui consectetur varius id vitae est. Curabitur vitae nisl elit. Etiam non aliquam risus. Nullam nunc turpis, consectetur vitae pretium eu, eleifend ut ex.";
+    const topic = "coding";
+    return postArticle(topic, title, body, username).then(article => {
+      expect(article).toHaveProperty("topic", "coding");
+      expect(article).toHaveProperty("username", "jessjelly");
+      expect(article).toHaveProperty("title", "A New Way to Code.");
+      expect(article).toHaveProperty(
+        "body",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nulla diam, efficitur vel eros convallis, feugiat convallis eros. Vivamus vel leo nec dolor maximus faucibus sed sit amet metus. Integer aliquet turpis elit, sed fringilla diam commodo ut. Aliquam quis est augue. Nam non enim eget dui consectetur varius id vitae est. Curabitur vitae nisl elit. Etiam non aliquam risus. Nullam nunc turpis, consectetur vitae pretium eu, eleifend ut ex."
+      );
+      expect(article).toHaveProperty("votes");
+      expect(article).toHaveProperty("created_at");
     });
   });
 });
