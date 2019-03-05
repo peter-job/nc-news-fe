@@ -7,6 +7,7 @@ import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import NoMatch from "./components/NoMatch";
 import ArticlePage from "./components/ArticlePage";
+import NewArticle from "./components/NewArticle";
 import { getUserByUsername } from "./api";
 
 class App extends Component {
@@ -17,8 +18,15 @@ class App extends Component {
 
   navOptions = [
     { value: "/", name: "Home" },
-    { value: "/login", name: "Login" }
+    { value: "/login", name: "Login" },
+    { value: "/article/new", name: "New Article" }
   ];
+
+  navRef = {
+    "/": "Home",
+    "/login": "Login",
+    "/article/new": "New Article"
+  };
 
   componentDidMount() {
     const retrievedState = localStorage.getItem("state");
@@ -52,7 +60,7 @@ class App extends Component {
           user={user}
           navOptions={this.navOptions}
           handler={this.handleNavbar}
-          selected={page}
+          selected={this.navRef[window.location.pathname]}
         />
         <Router className="Router">
           <Auth
@@ -63,6 +71,7 @@ class App extends Component {
           />
           <Home path="/" />
           <ArticlePage path="/articles/:id" />
+          <NewArticle path="/article/new" user={user} />
           <NoMatch default />
         </Router>
       </div>
