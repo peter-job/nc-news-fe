@@ -1,14 +1,14 @@
 import React, { Component } from "react";
-import { Link } from "@reach/router";
+import { Link, navigate } from "@reach/router";
 import "../styles/NewArticle.css";
-import { getTopics } from "../api";
+import { getTopics, postArticle } from "../api";
 
 class NewArticle extends Component {
   state = {
     topics: null,
     isLoading: true,
-    title: "",
     topic: "",
+    title: "",
     body: ""
   };
 
@@ -18,6 +18,17 @@ class NewArticle extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
+    const { topic, title, body } = this.state;
+    const { user } = this.props;
+    console.log(this.state);
+    postArticle(topic, title, body, user.username).then(article => {
+      console.log("navigating away!");
+      navigate("/articles/" + article.article_id);
+    });
+  };
+
+  handleChange = event => {
+    this.setState({ [event.target.name]: event.target.value });
   };
 
   render() {
@@ -36,15 +47,33 @@ class NewArticle extends Component {
     return (
       <div className="NewArticle">
         <p>New Article</p>
-        <form className="articleForm">
-          <input type="text" placeholder="Title" className="titleInput" />
+        <form className="articleForm" onSubmit={this.handleSubmit}>
+          <input
+            onChange={this.handleChange}
+            type="text"
+            placeholder="Title"
+            className="titleInput"
+            name="title"
+            value={this.state.Title}
+          />
           <br />
-          <textarea className="articleTextarea" placeholder="Say something!" />
+          <textarea
+            className="articleTextarea"
+            placeholder="Say something!"
+            name="body"
+            onChange={this.handleChange}
+            value={this.state.Body}
+          />
           <br />
-          <select>
-            <option disabled selected hidden>
+          <select
+            name="topic"
+            onChange={this.handleChange}
+            value={this.state.Topic}
+            defaultValue="Topic"
+          >
+            <option disabled hidden>
               Topic
-            </option>
+            </option>{" "}
             {topics.map(topic => (
               <option key={topic.slug} value={topic.slug}>
                 {topic.slug}
