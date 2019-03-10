@@ -1,10 +1,30 @@
 .NewArticle {
   text-align: center;
-  padding: 1em;
+}
+
+.articleForm {
+  padding: 0.5em;
 }
 
 .NewArticle a:link,
-.NewArtilce a:visited {
+.NewArticle a:visited {
   color: black;
   text-decoration: none;
+}
+
+.NewArticle .titleInput {
+  min-width: 20em;
+  margin: 0;
+  padding: 0;
+}
+
+.NewArticle .articleForm {
+  width: auto;
+}
+
+.NewArticle .articleTextarea {
+  min-width: 20em;
+  min-height: 10em;
+  margin: 1;
+  padding: 0.5px;
 }

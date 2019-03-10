@@ -36,18 +36,21 @@ class NewArticle extends Component {
     return (
       <div className="NewArticle">
         <p>New Article</p>
-        <form>
-          <label>Title: </label>
-          <input type="text" />
+        <form className="articleForm">
+          <input type="text" placeholder="Title" className="titleInput" />
+          <br />
+          <textarea className="articleTextarea" placeholder="Say something!" />
+          <br />
           <select>
+            <option disabled selected hidden>
+              Topic
+            </option>
             {topics.map(topic => (
               <option key={topic.slug} value={topic.slug}>
                 {topic.slug}
               </option>
             ))}
           </select>
-          <textarea cols="32" rows="4" />
-          <br />
           <input type="submit" value="Post" />
         </form>
       </div>
