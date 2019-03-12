@@ -50,3 +50,8 @@ export const postArticle = (topic, title, body, username) => {
     .post(path, { title, body, username })
     .then(({ data }) => data.article);
 };
+
+export const postComment = article_id => {
+  const path = `articles/${article_id}/comments`;
+  return request.post(path);
+};

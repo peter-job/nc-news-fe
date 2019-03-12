@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Article from "./Article";
 import Comment from "./Comment";
+import NewComment from "./NewComment";
 import { getArticleById, getCommentsByArticleId } from "../api";
 import ContentOptions from "./ContentOptions";
 import { throttle } from "lodash";
@@ -120,6 +121,9 @@ class ArticlePage extends Component {
     return (
       <div className="ArticlePage">
         <Article key={article.title} article={article} full={true} />
+        <div>
+          <NewComment user={this.props.user} />
+        </div>
         <div className="CommentsHeader">
           <br />
           <h3>Comments</h3>

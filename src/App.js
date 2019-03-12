@@ -53,7 +53,7 @@ class App extends Component {
   };
 
   render() {
-    const { user, page } = this.state;
+    const { user } = this.state;
     return (
       <div className="App">
         <Navbar
@@ -70,7 +70,7 @@ class App extends Component {
             user={this.state.user}
           />
           <Home path="/" />
-          <ArticlePage path="/articles/:id" />
+          <ArticlePage path="/articles/:id" user={user} />
           <NewArticle path="/article/new" user={user} />
           <NoMatch default />
         </Router>
