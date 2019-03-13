@@ -21,7 +21,13 @@ export const getArticles = params => {
 
 export const getArticleById = article_id => {
   const path = `articles/` + article_id;
-  return request.get(path).then(({ data }) => data.article);
+  return request.get(path).then(({ data }) => {
+    const article = data.article;
+    return getUserByUsername(article.author).then(user => {
+      article.avatar_url = user.avatar_url;
+      return article;
+    });
+  });
 };
 
 export const patchVotes = (voted, article_id, comment_id) => {

@@ -66,6 +66,7 @@ describe("getArticleById", () => {
       expect(article).toHaveProperty("topic");
       expect(article).toHaveProperty("comment_count");
       expect(article).toHaveProperty("body");
+      expect(article).toHaveProperty("avatar_url");
     });
   });
 });
