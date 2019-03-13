@@ -1,4 +1,4 @@
-# nc-news-fe
+# NC News
 
 NC News is a front-end React App serving user-generated news articles on a selection of topics.
 
