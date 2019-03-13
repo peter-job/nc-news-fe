@@ -12,7 +12,7 @@ const UserIcon = ({ user }) => {
         <img
           className="userAvatar"
           alt={user ? user.username : "login"}
-          src="https://pbs.twimg.com/profile_images/610487054569336832/yrUSzk7S.jpg"
+          src={user ? user.avatar_url : "images/login.png"}
         />
       </Link>
     </div>
