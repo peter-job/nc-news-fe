@@ -85,6 +85,12 @@ class ArticlePage extends Component {
       .addEventListener("scroll", this.handleScroll);
   }
 
+  handleNewComment = () => {
+    this.setState({ page: 1, comments: null, isLoading: true }, () =>
+      this.fetchComments()
+    );
+  };
+
   handleScroll = throttle(event => {
     const { clientHeight, scrollTop, scrollHeight } = event.target;
     const distanceFromBottom = scrollHeight - (clientHeight + scrollTop);
@@ -122,7 +128,11 @@ class ArticlePage extends Component {
       <div className="ArticlePage">
         <Article key={article.title} article={article} full={true} />
         <div>
-          <NewComment user={this.props.user} />
+          <NewComment
+            user={this.props.user}
+            article_id={this.props.id}
+            handler={this.handleNewComment}
+          />
         </div>
         <div className="CommentsHeader">
           <br />
