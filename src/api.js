@@ -42,7 +42,17 @@ export const patchVotes = (voted, article_id, comment_id) => {
 
 export const getCommentsByArticleId = (article_id, params) => {
   const path = `articles/${article_id}/comments`;
-  return request.get(path, { params }).then(({ data }) => data.comments);
+  return request.get(path, { params }).then(({ data }) => {
+    const comments = data.comments;
+    return Promise.all(
+      comments.map(comment =>
+        getUserByUsername(comment.author).then(user => {
+          comment.avatar_url = user.avatar_url;
+          return comment;
+        })
+      )
+    );
+  });
 };
 
 export const getUserByUsername = username => {

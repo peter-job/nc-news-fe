@@ -124,6 +124,7 @@ describe("getCommentsByArticleId", () => {
         expect(comment).toHaveProperty("votes");
         expect(comment).toHaveProperty("created_at");
         expect(comment).toHaveProperty("body");
+        expect(comment).toHaveProperty("avatar_url");
       });
     });
   });
