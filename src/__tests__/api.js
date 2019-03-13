@@ -6,7 +6,8 @@ const {
   getUserByUsername,
   getUsers,
   getTopics,
-  postArticle
+  postArticle,
+  postComment
 } = require("../api");
 
 describe("getArticles", () => {
@@ -180,6 +181,24 @@ describe("postArticle", () => {
       );
       expect(article).toHaveProperty("votes");
       expect(article).toHaveProperty("created_at");
+    });
+  });
+});
+
+describe("postComment", () => {
+  it("posts comment and returns if successful", () => {
+    const username = "jessjelly";
+    const article_id = "1";
+    const body =
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nulla diam, efficitur vel eros convallis, feugiat convallis eros.";
+    return postComment(article_id, username, body).then(comment => {
+      expect(comment).toHaveProperty("username", "jessjelly");
+      expect(comment).toHaveProperty(
+        "body",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nulla diam, efficitur vel eros convallis, feugiat convallis eros."
+      );
+      expect(comment).toHaveProperty("votes");
+      expect(comment).toHaveProperty("created_at");
     });
   });
 });
