@@ -26,13 +26,11 @@ li {
 .Article .avatar {
   grid-area: avatar;
   margin: 0;
-  background-color: palevioletred;
 }
 
 .Article .avatar img {
   height: 100%;
   width: 100%;
-  background-color: palevioletred;
   border-radius: 50%;
 }
 
