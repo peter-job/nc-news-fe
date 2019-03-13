@@ -21,6 +21,7 @@ describe("getArticles", () => {
         expect(article).toHaveProperty("created_at");
         expect(article).toHaveProperty("topic");
         expect(article).toHaveProperty("comment_count");
+        expect(article).toHaveProperty("avatar_url");
       });
     });
   });

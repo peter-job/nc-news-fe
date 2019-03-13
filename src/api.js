@@ -6,7 +6,17 @@ const request = axios.create({
 
 export const getArticles = params => {
   const path = `articles`;
-  return request.get(path, { params }).then(({ data }) => data.articles);
+  return request.get(path, { params }).then(({ data }) => {
+    const articles = data.articles;
+    return Promise.all(
+      articles.map(article =>
+        getUserByUsername(article.author).then(user => {
+          article.avatar_url = user.avatar_url;
+          return article;
+        })
+      )
+    );
+  });
 };
 
 export const getArticleById = article_id => {
