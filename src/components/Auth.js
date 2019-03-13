@@ -35,9 +35,14 @@ class Auth extends Component {
       <div className="Auth">
         <form onSubmit={this.handleSubmit}>
           <label>Username: </label>
-          <input onChange={this.handleChange} value={this.state.username} />
-          <br />
-          <button type="submit">Log in</button>
+          <input
+            onChange={this.handleChange}
+            value={this.state.username}
+            placeholder="try 'jessjelly'"
+          />
+          <p>
+            <button type="submit">Log in</button>
+          </p>
         </form>
         {this.state.notFound && (
           <span>
