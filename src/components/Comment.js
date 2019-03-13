@@ -9,7 +9,11 @@ const Comment = ({ comment, article_id }) => {
       <div className="avatar">
         <img
           alt={comment.author}
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/SNice.svg/220px-SNice.svg.png"
+          src={comment.avatar_url}
+          onError={e =>
+            (e.target.src =
+              "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/SNice.svg/220px-SNice.svg.png")
+          }
         />
       </div>
       <div className="author">
