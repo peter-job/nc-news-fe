@@ -26,7 +26,7 @@ This app has been deployed on Netlify. To deploy your own version, follow these 
 1. To allow netflify to handle redirects, create a _redirects file in the public folder of your repo with a single line: `/* /index.html 200`
 2. Sign up to [Netlify](https://app.netlify.com/signup)
 3. Select the option to link with your GitHub account.
-4. Select the option to continually deploy wuth GitHub.
+4. Select the option to continually deploy with GitHub.
 5. In the 'Repository access' configuration box, select this repository.
 6. On the build options tab, verify the default settings, then click 'Deploy Site'
 
