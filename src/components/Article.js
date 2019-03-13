@@ -10,7 +10,11 @@ const Article = ({ article, full }) => {
       <div className="avatar">
         <img
           alt={article.author}
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/SNice.svg/220px-SNice.svg.png"
+          src={article.avatar_url}
+          onError={e =>
+            (e.target.src =
+              "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/SNice.svg/220px-SNice.svg.png")
+          }
         />
       </div>
       <div className="author">
