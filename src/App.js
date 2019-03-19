@@ -16,18 +16,6 @@ class App extends Component {
     page: "Home"
   };
 
-  navOptions = [
-    { value: "/", name: "Home" },
-    { value: "/login", name: "Login" },
-    { value: "/article/new", name: "New Article" }
-  ];
-
-  navRef = {
-    "/": "Home",
-    "/login": "Login",
-    "/article/new": "New Article"
-  };
-
   componentDidMount() {
     const retrievedState = localStorage.getItem("state");
     if (retrievedState) {
@@ -47,7 +35,7 @@ class App extends Component {
     return getUserByUsername(username).then(user => this.setState({ user }));
   };
 
-  handleNavbar = ({ field, value, name }) => {
+  handleNavbar = ({ value, name }) => {
     this.setState({ page: name });
     navigate(value);
   };
@@ -56,12 +44,7 @@ class App extends Component {
     const { user } = this.state;
     return (
       <div className="App">
-        <Navbar
-          user={user}
-          navOptions={this.navOptions}
-          handler={this.handleNavbar}
-          selected={this.navRef[window.location.pathname]}
-        />
+        <Navbar user={user} handler={this.handleNavbar} />
         <Router className="Router">
           <Auth
             path="/login"
