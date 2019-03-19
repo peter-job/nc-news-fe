@@ -1,6 +1,19 @@
 .Router {
   grid-area: router;
-  height: 1fr;
+  width: 100%;
+  justify-self: center;
   overflow-y: auto;
   background-color: lightgray;
+}
+
+@media only screen and (min-width: 640px) {
+  .Router {
+    width: 640px;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .Router {
+    width: 320px;
+  }
 }
