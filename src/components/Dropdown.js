@@ -6,7 +6,23 @@ class Dropdown extends Component {
     active: false
   };
 
-  toggleActive = () => {
+  componentDidMount() {
+    document.addEventListener("click", this.handleClickOutside, true);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener("click", this.handleClickOutside, true);
+  }
+
+  dropdownRef = React.createRef();
+
+  handleClickOutside = e => {
+    if (!this.dropdownRef.current.contains(e.target)) {
+      this.setState({ active: false });
+    }
+  };
+
+  handleClickInside = () => {
     const { active } = this.state;
     this.setState({ active: !active });
   };
@@ -15,7 +31,11 @@ class Dropdown extends Component {
     const { active } = this.state;
     const { handler, title, selected, field, trayOptions } = this.props;
     return (
-      <div className="Dropdown noselect" onClick={this.toggleActive}>
+      <div
+        className="Dropdown noselect"
+        onClick={this.handleClickInside}
+        ref={this.dropdownRef}
+      >
         <p>{`${title}${selected}`}</p>
 
         <ul className={`Dropdown-List-${active ? "Active" : "Inactive"}`}>
