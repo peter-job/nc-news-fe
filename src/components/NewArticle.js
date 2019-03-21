@@ -2,12 +2,13 @@ import React, { Component } from "react";
 import { Link, navigate } from "@reach/router";
 import "../styles/NewArticle.css";
 import { getTopics, postArticle } from "../api";
+import Dropdown from "./Dropdown";
 
 class NewArticle extends Component {
   state = {
     topics: null,
     isLoading: true,
-    topic: "",
+    topic: "Choose a topic!",
     title: "",
     body: ""
   };
@@ -28,12 +29,14 @@ class NewArticle extends Component {
   };
 
   handleChange = event => {
-    this.setState({ [event.target.name]: event.target.value });
+    event.target
+      ? this.setState({ [event.target.name]: event.target.value })
+      : this.setState({ topic: event.value });
   };
 
   render() {
     const { user } = this.props;
-    const { isLoading, topics } = this.state;
+    const { isLoading, topics, topic } = this.state;
     if (!user) {
       return (
         <div className="NewArticle">
@@ -46,7 +49,8 @@ class NewArticle extends Component {
     }
     return (
       <div className="NewArticle">
-        <p>New Article</p>
+        <p className="title">Write an Article</p>
+        <hr />
         <form className="articleForm" onSubmit={this.handleSubmit}>
           <input
             onChange={this.handleChange}
@@ -64,22 +68,16 @@ class NewArticle extends Component {
             onChange={this.handleChange}
             value={this.state.Body}
           />
+          <Dropdown
+            title="Topic: "
+            trayOptions={topics.map(topic => ({
+              name: topic.slug,
+              value: topic.slug
+            }))}
+            handler={this.handleChange}
+            selected={topic}
+          />
           <br />
-          <select
-            name="topic"
-            onChange={this.handleChange}
-            value={this.state.Topic}
-            defaultValue="Topic"
-          >
-            <option disabled hidden>
-              Topic
-            </option>{" "}
-            {topics.map(topic => (
-              <option key={topic.slug} value={topic.slug}>
-                {topic.slug}
-              </option>
-            ))}
-          </select>
           <input type="submit" value="Post" />
         </form>
       </div>
