@@ -35,7 +35,6 @@ li {
 
 .Comment .body {
   grid-area: body;
-  font-family: "Merriweather", serif;
   text-align: left;
   margin-top: 1em;
   margin-bottom: 0.25em;

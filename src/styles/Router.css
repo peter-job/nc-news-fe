@@ -3,7 +3,7 @@
   width: 100%;
   justify-self: center;
   overflow-y: auto;
-  background-color: lightgray;
+  background-color: gainsboro;
 }
 
 @media only screen and (min-width: 640px) {

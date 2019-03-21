@@ -1,5 +1,8 @@
 .UserIcon .userName {
   justify-self: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .UserIcon a:link,
@@ -24,7 +27,7 @@
 }
 
 .UserIcon .userName {
-  color: white;
+  color: black;
   padding-right: 0.5em;
 }
 

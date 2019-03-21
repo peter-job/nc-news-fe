@@ -34,7 +34,6 @@ li {
 }
 
 .Article .title {
-  font-family: "Merriweather", serif;
   text-align: left;
   grid-area: title;
   margin-top: 0.25em;
@@ -68,7 +67,6 @@ li {
 .Article .Body {
   grid-area: body;
   background-color: peachpuff;
-  font-family: "Merriweather", serif;
   font-weight: lighter;
   margin-top: 1em;
 }
