@@ -1,13 +1,25 @@
 .Dropdown {
   cursor: pointer;
-  background-color: yellow;
+  background-color: lightgreen;
   z-index: 1;
-  text-align: center;
+  text-align: left;
   height: 2em;
 }
 
-.Dropdown p {
+.Dropdown .display {
+  display: grid;
+  grid-template-columns: 1fr 1.5em;
+  grid-template-areas: "selected arrow";
+  height: 100%;
+}
+
+.Dropdown .display span {
   margin: 0.25em;
+  padding-left: 0.25em;
+  padding-right: 0.25em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .Dropdown-List-Inactive {
@@ -22,10 +34,29 @@
   position: relative;
   margin: 0px;
   background-color: #ffff66;
+  height: auto;
+}
+
+.Dropdown-List-Active hr {
+  margin: 0;
+  margin-left: 0.25em;
+  margin-right: 0.25em;
 }
 
 .Dropdown-Li {
-  padding: 5px;
+  padding: 0.5em;
+  margin: 0;
+}
+
+.Dropdown .selected {
+  grid-area: selected;
+}
+
+.Dropdown .arrow {
+  grid-area: arrow;
+  align-self: center;
+  padding-bottom: 0.25em;
+  text-align: center;
 }
 
 .Dropdown-Li:hover {

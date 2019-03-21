@@ -36,8 +36,10 @@ class Dropdown extends Component {
         onClick={this.handleClickInside}
         ref={this.dropdownRef}
       >
-        <p>{`${title}${selected}`}</p>
-
+        <div className="display">
+          <span className="selected">{`${title}${selected}`}</span>
+          <span className="arrow">⯆</span>
+        </div>
         <ul className={`Dropdown-List-${active ? "Active" : "Inactive"}`}>
           {trayOptions.map(option => (
             <li
