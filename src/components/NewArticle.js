@@ -50,7 +50,6 @@ class NewArticle extends Component {
     return (
       <div className="NewArticle">
         <p className="title">Write an Article</p>
-        <hr />
         <form className="articleForm" onSubmit={this.handleSubmit}>
           <input
             onChange={this.handleChange}
