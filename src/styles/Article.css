@@ -40,6 +40,10 @@ li {
   margin-bottom: 0.25em;
 }
 
+.Article .title .full {
+  font-size: 1.5em;
+}
+
 .Article .title a:link,
 .Article .title a:visited {
   color: black;

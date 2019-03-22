@@ -29,7 +29,7 @@ const Article = ({ article, full }) => {
       </div>
       <div className="title">
         {full ? (
-          <span>{article.title}</span>
+          <span className="title full">{article.title}</span>
         ) : (
           <Link to={`/articles/${article.article_id}`}>{article.title}</Link>
         )}
