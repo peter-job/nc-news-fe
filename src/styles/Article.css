@@ -38,7 +38,6 @@ li {
   grid-area: title;
   margin-top: 0.25em;
   margin-bottom: 0.25em;
-  background-color: peachpuff;
 }
 
 .Article .title a:link,
@@ -61,12 +60,10 @@ li {
   margin-left: 0.5em;
   font-size: 0.8em;
   align-self: center;
-  background-color: paleturquoise;
 }
 
 .Article .Body {
   grid-area: body;
-  background-color: peachpuff;
   font-weight: lighter;
   margin-top: 1em;
 }
@@ -76,11 +73,9 @@ li {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-areas: "down count up";
-  background-color: palegreen;
   justify-items: center;
   align-items: center;
   margin: 0;
-  color: darkslategray;
 }
 
 .Votes .down {
@@ -96,5 +91,5 @@ li {
 }
 
 .Votes .Voted {
-  color: orange;
+  color: #ffff66;
 }
