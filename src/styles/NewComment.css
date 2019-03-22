@@ -13,13 +13,10 @@
 }
 
 .NewComment .commentTextarea {
-  width: 100%;
+  width: calc(100% - 0.5em);
   min-height: 10em;
-  padding: 0;
-  border-width: 2px;
-  border-style: inset;
-  border-color: initial;
-  border-image: initial;
+  padding: 0.25em;
+  border-width: 0;
 }
 
 .NewComment textarea {
