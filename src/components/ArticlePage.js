@@ -146,15 +146,17 @@ class ArticlePage extends Component {
           sortOptions={this.sortOptions}
           orderOptions={this.orderOptions}
         />
-        <div className="CommentList">
+        <ul className="CommentList">
           {comments.map(comment => (
-            <Comment
-              key={comment.comment_id}
-              comment={comment}
-              article_id={article.article_id}
-            />
+            <li>
+              <Comment
+                key={comment.comment_id}
+                comment={comment}
+                article_id={article.article_id}
+              />
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     );
   }
