@@ -60,30 +60,3 @@ li {
   font-size: 0.8em;
   align-self: center;
 }
-
-.Votes {
-  grid-area: votes;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-areas: "down count up";
-  justify-items: center;
-  align-items: center;
-  margin: 0;
-  color: darkslategray;
-}
-
-.Votes .down {
-  grid-area: down;
-}
-
-.Votes .count {
-  grid-area: count;
-}
-
-.Votes .up {
-  grid-area: up;
-}
-
-.Votes .Voted {
-  color: coral;
-}
