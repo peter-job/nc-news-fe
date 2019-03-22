@@ -1,0 +1,29 @@
+.NewComment {
+  text-align: center;
+  background-color: coral;
+  padding: 0.5em;
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
+  display: grid;
+}
+
+.commentForm {
+  padding: 0.5em;
+  width: auto;
+}
+
+.NewComment .commentTextarea {
+  width: 100%;
+  min-height: 10em;
+  padding: 0;
+  border-width: 2px;
+  border-style: inset;
+  border-color: initial;
+  border-image: initial;
+}
+
+.NewComment textarea {
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
+  font-family: "Roboto Mono", sans-serif;
+}

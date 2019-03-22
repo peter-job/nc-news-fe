@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "@reach/router";
-import "../styles/NewArticle.css";
+import "../styles/NewComment.css";
 import { postComment } from "../api";
 
 class NewComment extends Component {
@@ -26,7 +26,7 @@ class NewComment extends Component {
     const { isLoading } = this.state;
     if (!user) {
       return (
-        <div className="NewArticle">
+        <div className="NewComment">
           <Link to="/login">Please login first.</Link>
         </div>
       );
@@ -35,10 +35,10 @@ class NewComment extends Component {
       return <p>Loading...</p>;
     }
     return (
-      <div className="NewArticle">
-        <form className="articleForm" onSubmit={this.handleSubmit}>
+      <div className="NewComment">
+        <form className="commentForm" onSubmit={this.handleSubmit}>
           <textarea
-            className="articleTextarea"
+            className="commentTextarea"
             placeholder="Say something!"
             onChange={this.handleChange}
             value={this.state.body}
