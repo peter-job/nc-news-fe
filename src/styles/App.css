@@ -15,6 +15,14 @@ body {
   font-family: "Roboto Mono", monospace;
 }
 
+.noselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 input[type="submit"],
 button {
   background-color: #ffff66;
@@ -39,10 +47,10 @@ input[type="text"] {
   font-family: "Roboto Mono", sans-serif;
 }
 
-.noselect {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+.Error {
+  padding: 1em;
+}
+
+.Error p {
+  text-align: center;
 }
