@@ -1,9 +1,9 @@
 import React from "react";
-import "../styles/NoMatch.css";
+import "../styles/Error.css";
 
 const NoMatch = () => {
   return (
-    <div className="NoMatch">
+    <div className="Error">
       <p>Page not found!</p>
     </div>
   );

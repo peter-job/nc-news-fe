@@ -3,6 +3,13 @@ import Article from "./Article";
 import "../styles/ArticleList.css";
 
 const ArticleList = ({ articles }) => {
+  if (articles.length === 0) {
+    return (
+      <div className="Loading">
+        <p>Loading...</p>
+      </div>
+    );
+  }
   return (
     <ul>
       {articles.map(article => {

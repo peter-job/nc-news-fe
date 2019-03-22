@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Fragment, Component } from "react";
 import Article from "./Article";
 import Comment from "./Comment";
 import NewComment from "./NewComment";
@@ -121,9 +121,18 @@ class ArticlePage extends Component {
       order
     } = this.state;
     if (hasError) {
-      return <p>Something went wrong...</p>;
+      return (
+        <div className="Error">
+          <p>Sorry, we couldn't find that article...</p>
+        </div>
+      );
     }
-    if (isLoading) return <p>Loading...</p>;
+    if (isLoading)
+      return (
+        <div className="Loading">
+          <p>Loading...</p>
+        </div>
+      );
     return (
       <div className="ArticlePage">
         <Article key={article.title} article={article} full={true} />
@@ -134,29 +143,39 @@ class ArticlePage extends Component {
             handler={this.handleNewComment}
           />
         </div>
-        <div className="CommentsHeader">
-          <br />
-          <h3>Comments</h3>
-          <br />
-        </div>
-        <ContentOptions
-          handler={this.updateContentOptions}
-          sort_by={sort_by}
-          order={order}
-          sortOptions={this.sortOptions}
-          orderOptions={this.orderOptions}
-        />
-        <ul className="CommentList">
-          {comments.map(comment => (
-            <li>
-              <Comment
-                key={comment.comment_id}
-                comment={comment}
-                article_id={article.article_id}
-              />
-            </li>
-          ))}
-        </ul>
+        {comments.length > 0 ? (
+          <Fragment>
+            <div className="CommentsHeader">
+              <br />
+              <h3>Comments</h3>
+              <br />
+            </div>
+            <ContentOptions
+              handler={this.updateContentOptions}
+              sort_by={sort_by}
+              order={order}
+              sortOptions={this.sortOptions}
+              orderOptions={this.orderOptions}
+            />
+            <ul className="CommentList">
+              {comments.map(comment => (
+                <li>
+                  <Comment
+                    key={comment.comment_id}
+                    comment={comment}
+                    article_id={article.article_id}
+                  />
+                </li>
+              ))}
+            </ul>
+          </Fragment>
+        ) : (
+          <div className="CommentsHeader">
+            <br />
+            <h3>No comments yet!</h3>
+            <br />
+          </div>
+        )}
       </div>
     );
   }
