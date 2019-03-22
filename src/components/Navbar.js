@@ -1,8 +1,7 @@
 import React from "react";
-import { Location } from "@reach/router";
+import { Location, Link } from "@reach/router";
 import "../styles/Navbar.css";
 import UserIcon from "./UserIcon";
-import Title from "./Title";
 import Dropdown from "./Dropdown";
 
 const navOptions = [
@@ -21,7 +20,11 @@ const navRef = {
 const Navbar = ({ user, handler }) => {
   return (
     <nav className="Navbar">
-      <Title />
+      <div className="Title">
+        <Link to="/">
+          <h2>NC</h2>
+        </Link>
+      </div>
       <Location>
         {({ location }) => (
           <Dropdown
