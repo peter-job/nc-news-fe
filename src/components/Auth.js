@@ -36,6 +36,7 @@ class Auth extends Component {
         <form onSubmit={this.handleSubmit}>
           <label>Username: </label>
           <input
+            type="text"
             onChange={this.handleChange}
             value={this.state.username}
             placeholder="try 'jessjelly'"
