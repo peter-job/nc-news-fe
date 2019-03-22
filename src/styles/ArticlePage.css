@@ -12,5 +12,21 @@ h3 {
   list-style: none;
   background-color: lightgray;
   height: 100%;
-  overflow-y: auto;
+}
+
+.Loading {
+  padding: 1em;
+  text-align: center;
+}
+
+@media only screen and (min-width: 640px) {
+  .ArticlePage {
+    width: 640px;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .ArticlePage {
+    width: 320px;
+  }
 }
