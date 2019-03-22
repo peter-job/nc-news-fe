@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { patchVotes } from "../api";
 import "../css/foundation-icons.css";
+import "../styles/Votes.css";
 
 class Vote extends Component {
   //save this to localstorage
@@ -35,7 +36,7 @@ class Vote extends Component {
           className={`up noselect ${voted > 0 ? "Voted" : ""}`}
           onClick={() => this.handleVote(1)}
         >
-          <i className="fi-arrow-up" />{" "}
+          ▲
         </span>
 
         <span className="count noselect">{votes + voted}</span>
@@ -44,7 +45,7 @@ class Vote extends Component {
           className={`down noselect ${voted < 0 ? "Voted" : ""}`}
           onClick={() => this.handleVote(-1)}
         >
-          <i className="fi-arrow-down" />{" "}
+          ▼
         </span>
       </Fragment>
     );
