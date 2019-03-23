@@ -40,7 +40,7 @@ class NewArticle extends Component {
     if (!user) {
       return (
         <div className="NewArticle">
-          <Link to="/login">Please login first.</Link>
+          <Link to="/login">Please log in to write an article.</Link>
         </div>
       );
     }

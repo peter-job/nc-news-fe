@@ -27,7 +27,7 @@ class NewComment extends Component {
     if (!user) {
       return (
         <div className="NewComment">
-          <Link to="/login">Please login first.</Link>
+          <Link to="/login">Please log in to comment.</Link>
         </div>
       );
     }
