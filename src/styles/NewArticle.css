@@ -3,11 +3,25 @@
   background-color: coral;
   padding: 0.5em;
   margin-top: 2em;
-  display: grid;
+  width: 100%;
+  height: auto;
+}
+
+@media only screen and (min-width: 640px) {
+  .NewArticle {
+    width: 640px;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .NewArticle {
+    width: 320px;
+  }
 }
 
 .articleForm {
   padding: 0.5em;
+  height: auto;
 }
 
 .NewArticle a:link,
@@ -19,10 +33,6 @@
 .NewArticle .title {
   text-align: left;
   padding: 0.5em;
-}
-
-.NewArticle hr {
-  margin: 0.5em;
 }
 
 .NewArticle .titleInput {
@@ -38,10 +48,6 @@
   padding: 0.25em;
   border-width: 0;
   width: calc(100% - 0.5em);
-}
-
-.NewArticle .articleForm {
-  width: auto;
 }
 
 .NewArticle .articleTextarea {
