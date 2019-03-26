@@ -45,6 +45,12 @@ class ArticlePage extends Component {
     }
   }
 
+  componentWillUnmount() {
+    document
+      .querySelector(".Router")
+      .removeEventListener("scroll", this.handleScroll);
+  }
+
   componentDidUpdate(prevProps, prevState) {
     const { page, hasAllComments, sort_by, order, isLoading } = this.state;
     const pageChange = prevState.page !== page;
@@ -56,7 +62,9 @@ class ArticlePage extends Component {
     }
 
     if (prevState.isLoading === true && isLoading === false) {
-      this.addScrollEventListener();
+      document
+        .querySelector(".Router")
+        .addEventListener("scroll", this.handleScroll);
     }
   }
 
@@ -78,12 +86,6 @@ class ArticlePage extends Component {
         }
       });
   };
-
-  addScrollEventListener() {
-    document
-      .querySelector(".ArticlePage")
-      .addEventListener("scroll", this.handleScroll);
-  }
 
   handleNewComment = () => {
     this.setState({ page: 1, comments: null, isLoading: true }, () =>
@@ -159,12 +161,8 @@ class ArticlePage extends Component {
             />
             <ul className="CommentList">
               {comments.map(comment => (
-                <li>
-                  <Comment
-                    key={comment.comment_id}
-                    comment={comment}
-                    article_id={article.article_id}
-                  />
+                <li key={comment.comment_id}>
+                  <Comment comment={comment} article_id={article.article_id} />
                 </li>
               ))}
             </ul>

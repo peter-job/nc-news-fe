@@ -31,7 +31,15 @@ class Home extends Component {
   componentDidMount() {
     const { sort_by } = this.state;
     getArticles(sort_by).then(articles => this.setState({ articles }));
-    this.addScrollEventListener();
+    document
+      .querySelector(".Router")
+      .addEventListener("scroll", this.handleScroll);
+  }
+
+  componentWillUnmount() {
+    document
+      .querySelector(".Router")
+      .removeEventListener("scroll", this.handleScroll);
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -68,12 +76,6 @@ class Home extends Component {
         }
       });
   };
-
-  addScrollEventListener() {
-    document
-      .querySelector(".ArticleList")
-      .addEventListener("scroll", this.handleScroll);
-  }
 
   handleScroll = throttle(event => {
     const { clientHeight, scrollTop, scrollHeight } = event.target;
