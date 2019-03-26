@@ -31,21 +31,13 @@ class ArticlePage extends Component {
   ];
 
   componentDidMount() {
-    const { id } = this.props;
-    if (!this.state.article) {
-      getArticleById(id)
-        .then(article => {
-          this.setState({ article });
-        })
-        .then(() => getCommentsByArticleId(id))
-        .then(comments => {
-          this.setState({ comments, isLoading: false });
-        })
-        .catch(err => this.setState({ hasError: true }));
-    }
+    this.fetchArticle()
+      .then(() => this.fetchComments())
+      .catch(() => this.setState({ hasError: true }));
   }
 
   componentWillUnmount() {
+    // remove infinite scrolling listener
     document
       .querySelector(".Router")
       .removeEventListener("scroll", this.handleScroll);
@@ -62,11 +54,19 @@ class ArticlePage extends Component {
     }
 
     if (prevState.isLoading === true && isLoading === false) {
+      //add infinite scrolling listener
       document
         .querySelector(".Router")
         .addEventListener("scroll", this.handleScroll);
     }
   }
+
+  fetchArticle = () => {
+    const { id } = this.props;
+    return getArticleById(id).then(article => {
+      this.setState({ article });
+    });
+  };
 
   fetchComments = () => {
     const { sort_by, order, page } = this.state;
@@ -95,8 +95,9 @@ class ArticlePage extends Component {
 
   handleScroll = throttle(event => {
     const { clientHeight, scrollTop, scrollHeight } = event.target;
+    const { isLoading, hasAllComments } = this.state;
     const distanceFromBottom = scrollHeight - (clientHeight + scrollTop);
-    if (distanceFromBottom < 150) {
+    if (distanceFromBottom < 150 && !isLoading && !hasAllComments) {
       this.setState(({ page }) => ({ page: ++page }));
     }
   }, 1000);

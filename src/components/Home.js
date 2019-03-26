@@ -11,6 +11,7 @@ class Home extends Component {
     order: "desc",
     page: 1,
     topic: null,
+    isLoading: true,
     hasAllArticles: false
   };
 
@@ -29,14 +30,15 @@ class Home extends Component {
   ];
 
   componentDidMount() {
-    const { sort_by } = this.state;
-    getArticles(sort_by).then(articles => this.setState({ articles }));
+    this.fetchArticles();
+    // add infinite scrolling event listener
     document
       .querySelector(".Router")
       .addEventListener("scroll", this.handleScroll);
   }
 
   componentWillUnmount() {
+    //remove infinite scrolling event listener
     document
       .querySelector(".Router")
       .removeEventListener("scroll", this.handleScroll);
@@ -60,7 +62,6 @@ class Home extends Component {
 
   fetchArticles = () => {
     const { sort_by, order, page } = this.state;
-
     getArticles({ sort_by, order, p: page })
       .then(newArticles => {
         this.setState(({ page, articles }) => ({
@@ -79,9 +80,10 @@ class Home extends Component {
 
   handleScroll = throttle(event => {
     const { clientHeight, scrollTop, scrollHeight } = event.target;
+    const { isLoading, hasAllArticles } = this.state;
     const distanceFromBottom = scrollHeight - (clientHeight + scrollTop);
-    if (distanceFromBottom < 150) {
-      this.setState(({ page }) => ({ page: page + 1 }));
+    if (distanceFromBottom < 150 && !isLoading && !hasAllArticles) {
+      this.setState(({ page }) => ({ page: ++page }));
     }
   }, 1000);
 
