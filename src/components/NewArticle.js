@@ -21,9 +21,7 @@ class NewArticle extends Component {
     event.preventDefault();
     const { topic, title, body } = this.state;
     const { user } = this.props;
-    console.log(this.state);
     postArticle(topic, title, body, user.username).then(article => {
-      console.log("navigating away!");
       navigate("/articles/" + article.article_id);
     });
   };
